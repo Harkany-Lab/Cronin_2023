@@ -8,6 +8,8 @@ format:
     code-fold: true
     fig-width: 14
     fig-height: 12
+    fig-format: retina
+    fig-responsive: true
     fig-dpi: 300
 execute:
   keep-md: false
@@ -21,6 +23,8 @@ knitr:
     autodep: true
     fig.align: center
     fig.retina: 2
+    fig.width: 14
+    fig.height: 12
 ---
 
 ```{r setup, include = FALSE}
@@ -50,7 +54,7 @@ knitr::knit_hooks$set(debug = function(before, options, envir) {
 
 knitr::opts_chunk$set(
   cache          = FALSE,
-  dev            = c("pdf", "png"),
+  dev            = c("png", "pdf"),
   timeit         = TRUE
 )
 ```
@@ -147,7 +151,7 @@ skimr::skim(l6.srt@meta.data)
 ```
 
 Check Violin plots for the expression of the gene of interest (goi) in the different clusters and tissues
-```{r plt-goi-vln-cluster, fig.width = 48, fig.height = 14, fig.fullwidth = TRUE}
+```{r plt-goi-vln-cluster, fig.width = 48, fig.height = 6, fig.fullwidth = TRUE}
 Idents(l6.srt) <- "ClusterName"
 Stacked_VlnPlot(
   seurat_object = l6.srt, features = goi, x_lab_rotate = TRUE,
@@ -155,7 +159,7 @@ Stacked_VlnPlot(
 )
 ```
 
-```{r plt-goi-vln-tissue, fig.width = 32, fig.height = 12, fig.fullwidth = TRUE}
+```{r plt-goi-vln-tissue, fig.width = 18, fig.height = 8, fig.fullwidth = TRUE}
 Idents(l6.srt) <- "Tissue"
 Stacked_VlnPlot(
   seurat_object = l6.srt, features = goi, x_lab_rotate = TRUE,
@@ -408,7 +412,7 @@ Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Slc17a6"),
 ### Calculate hexagon cell representation to quantify interactions between Wdr37 and other features in the SWNE space
 ```{r calc-hexagon-representation}
 l6.srt <- make_hexbin(l6.srt,
-  nbins = 80,
+  nbins = 42,
   dimension_reduction = "swne", use_dims = c(1, 2)
 )
 ```

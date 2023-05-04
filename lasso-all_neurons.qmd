@@ -8,7 +8,9 @@ format:
     code-fold: true
     fig-width: 14
     fig-height: 12
-    fig-dpi: 300
+    fig-format: retina
+    fig-responsive: true
+    fig-dpi: 600
 execute:
   keep-md: false
   echo: true
@@ -50,7 +52,7 @@ knitr::knit_hooks$set(debug = function(before, options, envir) {
 
 knitr::opts_chunk$set(
   cache          = FALSE,
-  dev            = c("pdf", "png"),
+  dev            = c("png", "pdf"),
   timeit         = TRUE
 )
 ```
@@ -158,7 +160,7 @@ import
 ```{r genes-update}
 gostres <- gost(query = import$term, organism = "mmusculus")
 
-gostres
+gostres$result
 
 p <- gostplot(gostres, capped = FALSE, interactive = FALSE)
 p
