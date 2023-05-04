@@ -1,0 +1,178 @@
+---
+title: "Run LASSO algorithm to identify the genes that are significant for the expression of Wdr37 in various brain regions that may contain potential cells of interest"
+author: "Evgenii O. Tretiakov"
+format:
+  html:
+    toc: true
+    df-print: paged
+    code-fold: true
+    fig-width: 14
+    fig-height: 12
+    fig-dpi: 300
+execute:
+  keep-md: false
+  echo: true
+  error: false
+  message: false
+  warning: false
+  debug: false
+knitr:
+  opts_chunk:
+    autodep: true
+    fig.align: center
+    fig.retina: 2
+---
+
+```{r setup, include = FALSE}
+DOCNAME <- "localisation-of-wdr37"
+NOW <- Sys.time()
+
+# Time chunks during knitting
+knitr::knit_hooks$set(timeit = function(before) {
+  if (before) {
+    print(paste("Start:", Sys.time()))
+    NOW <<- Sys.time()
+  } else {
+    print(paste("Stop:", Sys.time()))
+    print(Sys.time() - NOW)
+  }
+})
+
+knitr::knit_hooks$set(debug = function(before, options, envir) {
+  if (!before) {
+    message(
+      paste(names(envir), as.list(envir),
+        sep = " = ", collapse = "\n"
+      )
+    )
+  }
+})
+
+knitr::opts_chunk$set(
+  cache          = FALSE,
+  dev            = c("pdf", "png"),
+  timeit         = TRUE
+)
+```
+
+## Load data and setup parameters
+
+```{r libraries, cache=FALSE}
+# Load tidyverse infrastructure packages
+library(here)
+library(tidyverse)
+library(RColorBrewer)
+library(glmnet)
+
+# Load packages for scRNA-seq analysis and visualisation
+library(Seurat)
+library(SeuratWrappers)
+library(SeuratDisk)
+library(gprofiler2)
+```
+
+### Set paths
+
+```{r paths}
+set_here()
+data_dir <- here("data")
+output_dir <- here("outputs")
+plots_dir <- here(output_dir, "figures")
+tables_dir <- here(output_dir, "tables")
+```
+
+### Load helper functions and gene-sets
+
+```{r source, cache = FALSE}
+source(here("functions.R"))
+source(here("genes.R"))
+```
+
+### Set fixed variables
+
+```{r params-computation, cache = FALSE}
+# set seed
+reseed <- 42
+set.seed(seed = reseed)
+
+# available RAM in kB
+ram <- check_ram()
+
+# available cores
+n.cores <- available_cores(prop2use = .1)
+
+# Parameters for parallel execution
+plan("multisession", workers = n.cores)
+options(
+  future.globals.maxSize = 100000 * 1024^2,
+  future.rng.onMisuse = "ignore"
+)
+plan()
+```
+
+## Load data from Zeisel et al. (2018)
+
+```{r load-data, cache = FALSE}
+l6.srt <- read_rds(here("l6.srt.rds"))
+l6.srt
+```
+
+
+## prepare data for analysis
+```{r prepare-for-lasso}
+norm.counts <- as.matrix(l6.srt@assays$RNA@data)
+
+X <- t(norm.counts)
+colnames(X) <- rownames(l6.srt)
+y <- as.numeric(X[, "Wdr37"])
+X <- X[, -which(colnames(X) == "Wdr37")]
+```
+
+
+# Fit lasso model
+
+```{r fit-lasso}
+lambda <- cv.glmnet(X, y)$lambda.1se
+lasso <- glmnet(X, y, lambda = lambda)
+```
+
+## Get model prediction, calculate importances and link it to the variables
+```{r predict-lasso}
+import <- broom::tidy(lasso) %>%
+  filter(term!="(Intercept)") %>%  # drop the intercept
+  arrange(desc(abs(estimate)))
+
+genes_update <- gconvert(
+  import$term,
+  organism = "mmusculus",
+  target = "MGI",
+  numeric_ns = "",
+  mthreshold = Inf,
+  filter_na = TRUE
+) %>% select(name, description)
+
+import <- left_join(import, genes_update, by = c("term" = "name"))
+import
+```
+
+```{r genes-update}
+gostres <- gost(query = import$term, organism = "mmusculus")
+
+gostres
+
+p <- gostplot(gostres, capped = FALSE, interactive = FALSE)
+p
+```
+
+### Save results
+```{r save-results}
+write_csv(import, file = here(tables_dir, "brain-selected-wdr37-features-importance-glm_lasso.csv"))
+
+
+write_csv(gostres$result, file = here(tables_dir, "brain-selected-wdr37-features-importance-glm_lasso-enrichment.csv"))
+
+```
+
+```{r session-info}
+sessioninfo::session_info()
+```

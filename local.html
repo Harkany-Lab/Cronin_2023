@@ -1,0 +1,3050 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.262">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Evgenii O. Tretiakov">
+
+<title>Identifying the role of Wdr37 by position and molecular phenotype of expressing neurons in the mouse brain</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="local_files/libs/clipboard/clipboard.min.js"></script>
+<script src="local_files/libs/quarto-html/quarto.js"></script>
+<script src="local_files/libs/quarto-html/popper.min.js"></script>
+<script src="local_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="local_files/libs/quarto-html/anchor.min.js"></script>
+<link href="local_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="local_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="local_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="local_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="local_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<link href="local_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="local_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#load-data-and-setup-parameters" id="toc-load-data-and-setup-parameters" class="nav-link active" data-scroll-target="#load-data-and-setup-parameters">Load data and setup parameters</a>
+  <ul class="collapse">
+  <li><a href="#set-paths" id="toc-set-paths" class="nav-link" data-scroll-target="#set-paths">Set paths</a></li>
+  <li><a href="#load-helper-functions-and-gene-sets" id="toc-load-helper-functions-and-gene-sets" class="nav-link" data-scroll-target="#load-helper-functions-and-gene-sets">Load helper functions and gene-sets</a></li>
+  <li><a href="#set-fixed-variables" id="toc-set-fixed-variables" class="nav-link" data-scroll-target="#set-fixed-variables">Set fixed variables</a></li>
+  </ul></li>
+  <li><a href="#load-data-from-zeisel-et-al.-2018" id="toc-load-data-from-zeisel-et-al.-2018" class="nav-link" data-scroll-target="#load-data-from-zeisel-et-al.-2018">Load data from Zeisel et al.&nbsp;(2018)</a></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory data analysis</a>
+  <ul class="collapse">
+  <li><a href="#tsne" id="toc-tsne" class="nav-link" data-scroll-target="#tsne">tSNE</a></li>
+  <li><a href="#umap" id="toc-umap" class="nav-link" data-scroll-target="#umap">UMAP</a></li>
+  <li><a href="#umap-density-plots-of-interactions-between-wdr37-and-other-features" id="toc-umap-density-plots-of-interactions-between-wdr37-and-other-features" class="nav-link" data-scroll-target="#umap-density-plots-of-interactions-between-wdr37-and-other-features">UMAP density plots of interactions between Wdr37 and other features</a></li>
+  <li><a href="#umap-density-plots-of-neurotransmitter-phenotype-with-wdr37-and-other-features" id="toc-umap-density-plots-of-neurotransmitter-phenotype-with-wdr37-and-other-features" class="nav-link" data-scroll-target="#umap-density-plots-of-neurotransmitter-phenotype-with-wdr37-and-other-features">UMAP density plots of neurotransmitter phenotype with Wdr37 and other features</a></li>
+  </ul></li>
+  <li><a href="#focused-data-analysis-of-wdr37-brain-regions" id="toc-focused-data-analysis-of-wdr37-brain-regions" class="nav-link" data-scroll-target="#focused-data-analysis-of-wdr37-brain-regions">Focused data analysis of Wdr37+ brain regions</a>
+  <ul class="collapse">
+  <li><a href="#run-swne" id="toc-run-swne" class="nav-link" data-scroll-target="#run-swne">Run SWNE</a></li>
+  <li><a href="#swne-density-plots-of-interactions-between-wdr37-and-other-features" id="toc-swne-density-plots-of-interactions-between-wdr37-and-other-features" class="nav-link" data-scroll-target="#swne-density-plots-of-interactions-between-wdr37-and-other-features">SWNE density plots of interactions between Wdr37 and other features</a></li>
+  <li><a href="#calculate-hexagon-cell-representation-to-quantify-interactions-between-wdr37-and-other-features-in-the-swne-space" id="toc-calculate-hexagon-cell-representation-to-quantify-interactions-between-wdr37-and-other-features-in-the-swne-space" class="nav-link" data-scroll-target="#calculate-hexagon-cell-representation-to-quantify-interactions-between-wdr37-and-other-features-in-the-swne-space">Calculate hexagon cell representation to quantify interactions between Wdr37 and other features in the SWNE space</a></li>
+  <li><a href="#save-results" id="toc-save-results" class="nav-link" data-scroll-target="#save-results">Save results</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Identifying the role of Wdr37 by position and molecular phenotype of expressing neurons in the mouse brain</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Evgenii O. Tretiakov </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="load-data-and-setup-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="load-data-and-setup-parameters">Load data and setup parameters</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load tidyverse infrastructure packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages for scRNA-seq analysis and visualisation</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scCustomize)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(swne)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(UpSetR)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Nebulosa)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(schex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="set-paths" class="level3">
+<h3 class="anchored" data-anchor-id="set-paths">Set paths</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_here</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"data"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>output_dir <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"outputs"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plots_dir <span class="ot">&lt;-</span> <span class="fu">here</span>(output_dir, <span class="st">"figures"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>tables_dir <span class="ot">&lt;-</span> <span class="fu">here</span>(output_dir, <span class="st">"tables"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="load-helper-functions-and-gene-sets" class="level3">
+<h3 class="anchored" data-anchor-id="load-helper-functions-and-gene-sets">Load helper functions and gene-sets</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"functions.R"</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"genes.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="set-fixed-variables" class="level3">
+<h3 class="anchored" data-anchor-id="set-fixed-variables">Set fixed variables</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>reseed <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="at">seed =</span> reseed)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># available RAM in kB</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ram <span class="ot">&lt;-</span> <span class="fu">check_ram</span>()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># available cores</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>n.cores <span class="ot">&lt;-</span> <span class="fu">available_cores</span>(<span class="at">prop2use =</span> .<span class="dv">1</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for parallel execution</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(<span class="st">"multisession"</span>, <span class="at">workers =</span> n.cores)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">future.globals.maxSize =</span> <span class="dv">100000</span> <span class="sc">*</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">future.rng.onMisuse =</span> <span class="st">"ignore"</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>multisession:
+- args: function (..., workers = 8, envir = parent.frame())
+- tweaked: TRUE
+- call: plan("multisession", workers = n.cores)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="load-data-from-zeisel-et-al.-2018" class="level2">
+<h2 class="anchored" data-anchor-id="load-data-from-zeisel-et-al.-2018">Load data from Zeisel et al.&nbsp;(2018)</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>l6.neurons <span class="ot">&lt;-</span> <span class="fu">Connect</span>(<span class="at">filename =</span> <span class="fu">here</span>(<span class="st">"l6_r1_neurons.loom"</span>), <span class="at">mode =</span> <span class="st">"r"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>l6.neurons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Class: loom
+Filename: /data/l6_r1_neurons.loom
+Access type: H5F_ACC_RDONLY
+Attributes: last_modified
+Listing:
+       name    obj_type  dataset.dims dataset.type_class
+      attrs   H5I_GROUP          &lt;NA&gt;               &lt;NA&gt;
+  col_attrs   H5I_GROUP          &lt;NA&gt;               &lt;NA&gt;
+ col_graphs   H5I_GROUP          &lt;NA&gt;               &lt;NA&gt;
+     layers   H5I_GROUP          &lt;NA&gt;               &lt;NA&gt;
+     matrix H5I_DATASET 74539 x 27998          H5T_FLOAT
+  row_attrs   H5I_GROUP          &lt;NA&gt;               &lt;NA&gt;
+ row_graphs   H5I_GROUP          &lt;NA&gt;               &lt;NA&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">as.Seurat</span>(l6.neurons)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>l6.neurons<span class="sc">$</span><span class="fu">close_all</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>show srt object</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>l6.srt.srt <span class="ot">&lt;-</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Store_Palette_Seurat</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">seurat_object =</span> l6.srt,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="at">n =</span> <span class="dv">11</span>, <span class="at">name =</span> <span class="st">"Spectral"</span>)),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette_name =</span> <span class="st">"div_Colour_Pal"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>l6.srt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>An object of class Seurat 
+27998 features across 74539 samples within 1 assay 
+Active assay: RNA (27998 features, 0 variable features)</code></pre>
+</div>
+</div>
+<p>show metadata</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(l6.srt<span class="sc">@</span>meta.data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">l6.srt@meta.data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">74539</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">129</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">78</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 44%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AnalysisPool</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AnalysisProject</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bucket</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CellConc</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cell_Conc</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ChipID</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Class</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClusterName</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Comment</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Comments</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">168</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DateCaptured</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Date_Captured</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Description</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Developmental_compartment</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DonorID</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Estimated.Number.of.Cells</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">70736</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Flowcell</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fraction.Reads.in.Cells</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Label</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">73578</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Location_based_on</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">11871</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mean.Reads.per.Cell</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Median.Genes.per.Cell</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Median.UMI.Counts.per.Cell</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">69156</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NGI_PlateWell</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">74539</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Neurotransmitter</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">2875</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NumPooledAnimals</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Num_Pooled_Animals</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number.of.Reads</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCRCycles</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCR_Cycles</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PassedQC</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PlugDate</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Plug_Date</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">74539</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Probable_location</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">133</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Project</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Q30.Bases.in.Barcode</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Q30.Bases.in.RNA.Read</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">70736</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Q30.Bases.in.Sample.Index</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">70736</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Q30.Bases.in.UMI</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Reads.Mapped.Confidently.to.Exonic.Regions</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reads.Mapped.Confidently.to.Intergenic.Regions</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Reads.Mapped.Confidently.to.Intronic.Regions</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reads.Mapped.Confidently.to.Transcriptome</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Region</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SampleID</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">131</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SampleIndex</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SampleOK</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">73468</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sample_Index</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">59706</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SeqComment</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SeqLibDate</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SeqLibOk</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Seq_Comment</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">74539</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Seq_Lib_Date</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">73661</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Seq_Lib_Ok</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">73661</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sequencing.Saturation</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">70736</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Serial_Number</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Species</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Strain</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Subclass</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TargetNumCells</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Target_Num_Cells</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TaxonomyRank1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TaxonomyRank2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TaxonomyRank3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TaxonomyRank4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TaxonomySymbol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Taxonomy_group</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TimepointPool</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tissue</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total.Genes.Detected</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">70736</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Transcriptome</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Valid.Barcodes</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cDNAConcNanogramPerMicroliter</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cDNALibOk</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cDNA_Lib_Ok</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">54253</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ngperul_cDNA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">48185</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">ordered</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: left;">top_counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">orig.ident</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: left;">10X: 7100, 10X: 6905, 10X: 6766, 10X: 6515</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">nCount_RNA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4184.82</td>
+<td style="text-align: right;">3644.92</td>
+<td style="text-align: right;">160.00</td>
+<td style="text-align: right;">1805.00</td>
+<td style="text-align: right;">3199.00</td>
+<td style="text-align: right;">5396.00</td>
+<td style="text-align: right;">73358.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nFeature_RNA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1926.62</td>
+<td style="text-align: right;">1029.78</td>
+<td style="text-align: right;">88.00</td>
+<td style="text-align: right;">1109.00</td>
+<td style="text-align: right;">1776.00</td>
+<td style="text-align: right;">2597.00</td>
+<td style="text-align: right;">7490.00</td>
+<td style="text-align: left;">▇▇▂▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Astrocyte</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Astrocyte.Immune</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Astrocyte.Neurons</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Astrocyte.Oligos</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Astrocyte.Vascular</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Bergmann.glia</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Blood</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Blood.Vascular</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Enteric.glia</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Enteric.glia.Cycling</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Ependymal</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Ex.Neurons</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Ex.Vascular</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Immune</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Immune.Neurons</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Immune.Oligos</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Neurons</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▁▁▁▁▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Neurons.Cycling</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Neurons.Oligos</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Neurons.Satellite.glia</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Neurons.Vascular</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_OEC</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Oligos</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Oligos.Cycling</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Oligos.Vascular</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Satellite.glia</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Satellite.glia.Cycling</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Satellite.glia.Schwann</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Schwann</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ClassProbability_Ttr</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ClassProbability_Vascular</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clusters</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">108.63</td>
+<td style="text-align: right;">52.78</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">71.00</td>
+<td style="text-align: right;">94.00</td>
+<td style="text-align: right;">160.00</td>
+<td style="text-align: right;">213.00</td>
+<td style="text-align: left;">▃▇▆▇▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LeafOrder</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">70.80</td>
+<td style="text-align: right;">61.76</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">24.00</td>
+<td style="text-align: right;">42.00</td>
+<td style="text-align: right;">128.00</td>
+<td style="text-align: right;">214.00</td>
+<td style="text-align: left;">▇▃▁▂▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MitoRiboRatio</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">1.54</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">132.75</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OriginalClusters</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7.55</td>
+<td style="text-align: right;">6.40</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">6.00</td>
+<td style="text-align: right;">12.00</td>
+<td style="text-align: right;">24.00</td>
+<td style="text-align: left;">▇▅▂▃▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Outliers</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">X_KMeans_10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">1.74</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">X_LogCV</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.27</td>
+<td style="text-align: right;">1.77</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">3.06</td>
+<td style="text-align: right;">6.27</td>
+<td style="text-align: left;">▇▁▂▂▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">X_LogMean</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1.22</td>
+<td style="text-align: right;">1.82</td>
+<td style="text-align: right;">-6.33</td>
+<td style="text-align: right;">-2.80</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.39</td>
+<td style="text-align: left;">▁▂▂▁▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">X_NGenes</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1926.62</td>
+<td style="text-align: right;">1029.78</td>
+<td style="text-align: right;">88.00</td>
+<td style="text-align: right;">1109.00</td>
+<td style="text-align: right;">1776.00</td>
+<td style="text-align: right;">2597.00</td>
+<td style="text-align: right;">7490.00</td>
+<td style="text-align: left;">▇▇▂▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">X_PC1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">6.90</td>
+<td style="text-align: right;">-81.88</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">108.10</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">X_PC2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">-13.24</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">12.79</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">X_Total</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4184.82</td>
+<td style="text-align: right;">3644.92</td>
+<td style="text-align: right;">160.00</td>
+<td style="text-align: right;">1805.00</td>
+<td style="text-align: right;">3199.00</td>
+<td style="text-align: right;">5396.00</td>
+<td style="text-align: right;">73358.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">X_Valid</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">X_X</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">15.34</td>
+<td style="text-align: right;">-32.75</td>
+<td style="text-align: right;">-12.21</td>
+<td style="text-align: right;">-0.39</td>
+<td style="text-align: right;">12.18</td>
+<td style="text-align: right;">33.68</td>
+<td style="text-align: left;">▃▆▇▇▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">X_Y</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">15.08</td>
+<td style="text-align: right;">-34.33</td>
+<td style="text-align: right;">-10.69</td>
+<td style="text-align: right;">0.47</td>
+<td style="text-align: right;">11.77</td>
+<td style="text-align: right;">32.94</td>
+<td style="text-align: left;">▂▆▇▆▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">X_tSNE1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">12.08</td>
+<td style="text-align: right;">-53.06</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">54.05</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">X_tSNE2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.59</td>
+<td style="text-align: right;">11.60</td>
+<td style="text-align: right;">-51.77</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">52.87</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Check Violin plots for the expression of the gene of interest (goi) in the different clusters and tissues</p>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(l6.srt) <span class="ot">&lt;-</span> <span class="st">"ClusterName"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Stacked_VlnPlot</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> goi, <span class="at">x_lab_rotate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">color_seed =</span> reseed</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-goi-vln-cluster-1.pdf" class="img-fluid" width="14400"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(l6.srt) <span class="ot">&lt;-</span> <span class="st">"Tissue"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Stacked_VlnPlot</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> goi, <span class="at">x_lab_rotate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">color_seed =</span> reseed</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-goi-vln-tissue-1.pdf" class="img-fluid" width="9600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DotPlot_scCustom</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">assay =</span> <span class="st">"RNA"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">features =</span> goi,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">flip_axes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_lab_rotate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.by =</span> <span class="st">"Tissue"</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-dotplot-goi-by-tissue-1.pdf" class="img-fluid" width="14400"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DotPlot_scCustom</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">assay =</span> <span class="st">"RNA"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">features =</span> goi,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">flip_axes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_lab_rotate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.by =</span> <span class="st">"ClusterName"</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-dotplot-goi-by-cluster-1.pdf" class="img-fluid" width="14400"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Extact UMAP and tSNE coordinates from the srt object</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>umap <span class="ot">&lt;-</span> l6.srt<span class="sc">@</span>meta.data <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(X_X, X_Y) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(umap) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(l6.srt)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(umap) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"UMAP_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>l6.srt[[<span class="st">"umap"</span>]] <span class="ot">&lt;-</span> <span class="fu">CreateDimReducObject</span>(<span class="at">embeddings =</span> umap, <span class="at">key =</span> <span class="st">"UMAP_"</span>, <span class="at">assay =</span> <span class="fu">DefaultAssay</span>(l6.srt))</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>tsne <span class="ot">&lt;-</span> l6.srt<span class="sc">@</span>meta.data <span class="sc">%&gt;%</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(X_tSNE1, X_tSNE2) <span class="sc">%&gt;%</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tsne) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(l6.srt)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tsne) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"tSNE_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>l6.srt[[<span class="st">"tsne"</span>]] <span class="ot">&lt;-</span> <span class="fu">CreateDimReducObject</span>(<span class="at">embeddings =</span> tsne, <span class="at">key =</span> <span class="st">"tSNE_"</span>, <span class="at">assay =</span> <span class="fu">DefaultAssay</span>(l6.srt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory data analysis</h2>
+<p>Use standradised pipeline</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">NormalizeData</span>(l6.srt)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">FindVariableFeatures</span>(l6.srt, <span class="at">selection.method =</span> <span class="st">"vst"</span>, <span class="at">nfeatures =</span> <span class="dv">3500</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">ScaleData</span>(l6.srt)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>var.genes <span class="ot">&lt;-</span> <span class="fu">VariableFeatures</span>(l6.srt)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>cell.clusters <span class="ot">&lt;-</span> <span class="fu">Idents</span>(l6.srt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Check UMAP and tSNE plots for the expression of the gene of interest (goi) in the different clusters and tissues</p>
+<section id="tsne" class="level3">
+<h3 class="anchored" data-anchor-id="tsne">tSNE</h3>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot_scCustom</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  l6.srt,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"tsne"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">color_seed =</span> reseed</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">DimPlot_scCustom</span>(</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    l6.srt,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"tsne"</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">group.by =</span> <span class="st">"ClusterName"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">color_seed =</span> reseed</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">&amp;</span> <span class="fu">NoLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-tsne-1.pdf" class="img-fluid" width="7200"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="umap" class="level3">
+<h3 class="anchored" data-anchor-id="umap">UMAP</h3>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot_scCustom</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  l6.srt,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"umap"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">color_seed =</span> reseed</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">DimPlot_scCustom</span>(</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    l6.srt,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"umap"</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">group.by =</span> <span class="st">"ClusterName"</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">color_seed =</span> reseed</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">&amp;</span> <span class="fu">NoLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-1.pdf" class="img-fluid" width="7200"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">FeaturePlot_scCustom</span>(l6.srt, goi, <span class="at">num_columns =</span> <span class="dv">1</span>, <span class="at">pt.size =</span> <span class="dv">1</span>, <span class="at">order =</span> T, <span class="at">colors_use =</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">alpha =</span> .<span class="dv">6</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">option =</span> <span class="st">"E"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-goi-1.pdf" class="img-fluid" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="st">"Wdr37"</span>, <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-wdr37-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="st">"Pacs1"</span>, <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-pacs1-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="st">"Pacs2"</span>, <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-pacs2-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="st">"Grm5"</span>, <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-grm5-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="umap-density-plots-of-interactions-between-wdr37-and-other-features" class="level3">
+<h3 class="anchored" data-anchor-id="umap-density-plots-of-interactions-between-wdr37-and-other-features">UMAP density plots of interactions between Wdr37 and other features</h3>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-wdr37-pacs2-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Grm5"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-wdr37-grm5-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-grm5-pacs2-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="umap-density-plots-of-neurotransmitter-phenotype-with-wdr37-and-other-features" class="level3">
+<h3 class="anchored" data-anchor-id="umap-density-plots-of-neurotransmitter-phenotype-with-wdr37-and-other-features">UMAP density plots of neurotransmitter phenotype with Wdr37 and other features</h3>
+<section id="gaba" class="level4">
+<h4 class="anchored" data-anchor-id="gaba">GABA</h4>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Slc32a1"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-slc32a1-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Gad1"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-gad1-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Gad2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-gad2-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glutamate" class="level4">
+<h4 class="anchored" data-anchor-id="glutamate">Glutamate</h4>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-glut-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-wdr37-glut-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Pacs2"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-pacs2-glut-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-umap-density-grm5-glut-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="focused-data-analysis-of-wdr37-brain-regions" class="level2">
+<h2 class="anchored" data-anchor-id="focused-data-analysis-of-wdr37-brain-regions">Focused data analysis of Wdr37+ brain regions</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">subset</span>(l6.srt, <span class="at">idents =</span> <span class="fu">c</span>(<span class="st">"Hypoth"</span>, <span class="st">"MBd"</span>, <span class="st">"MBv"</span>, <span class="st">"Medulla"</span>, <span class="st">"Pons"</span>, <span class="st">"Thal"</span>))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">FindVariableFeatures</span>(l6.srt, <span class="at">selection.method =</span> <span class="st">"vst"</span>, <span class="at">nfeatures =</span> <span class="dv">3500</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">ScaleData</span>(l6.srt)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>var.genes <span class="ot">&lt;-</span> <span class="fu">VariableFeatures</span>(l6.srt)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>cell.clusters <span class="ot">&lt;-</span> <span class="fu">Idents</span>(l6.srt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="run-swne" class="level3">
+<h3 class="anchored" data-anchor-id="run-swne">Run SWNE</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Run SWNE</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">RunSWNE</span>(l6.srt,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">k =</span> <span class="dv">20</span>, <span class="at">genes.embed =</span> goi,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">return.format =</span> <span class="st">"seurat"</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>calculating variance fit ... using gam [1] "3500 variable genes to use"
+Initial stress        : 0.14858
+stress after  10 iters: 0.06763, magic = 0.092
+stress after  20 iters: 0.04619, magic = 0.500
+stress after  30 iters: 0.04593, magic = 0.500
+stress after  40 iters: 0.04590, magic = 0.500</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot_scCustom</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  l6.srt,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">color_seed =</span> reseed</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">DimPlot_scCustom</span>(</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    l6.srt,</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"swne"</span>,</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">group.by =</span> <span class="st">"ClusterName"</span>,</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">color_seed =</span> reseed</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">&amp;</span> <span class="fu">NoLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-swne-1.pdf" class="img-fluid" width="7200"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="swne-density-plots-of-interactions-between-wdr37-and-other-features" class="level3">
+<h3 class="anchored" data-anchor-id="swne-density-plots-of-interactions-between-wdr37-and-other-features">SWNE density plots of interactions between Wdr37 and other features</h3>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"swne"</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-swne-density-wdr37-pacs2-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Grm5"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"swne"</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-swne-density-wdr37-grm5-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"swne"</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-swne-density-grm5-pacs2-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"swne"</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-swne-density-wdr37-glut-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Pacs2"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"swne"</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-swne-density-pacs2-glut-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(<span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"swne"</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-init-swne-density-grm5-glut-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-hexagon-cell-representation-to-quantify-interactions-between-wdr37-and-other-features-in-the-swne-space" class="level3">
+<h3 class="anchored" data-anchor-id="calculate-hexagon-cell-representation-to-quantify-interactions-between-wdr37-and-other-features-in-the-swne-space">Calculate hexagon cell representation to quantify interactions between Wdr37 and other features in the SWNE space</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">make_hexbin</span>(l6.srt,</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">nbins =</span> <span class="dv">80</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimension_reduction =</span> <span class="st">"swne"</span>, <span class="at">use_dims =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="plot-hexagon-cell-representation" class="level4">
+<h4 class="anchored" data-anchor-id="plot-hexagon-cell-representation">Plot hexagon cell representation</h4>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_density</span>(l6.srt) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-hexagon-representation-density-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Wdr37"</span>,</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Wdr37 in logarithmic scale"</span>)</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-hexagon-representation-wdr37-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Pacs2"</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Pacs2 in logarithmic scale"</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-hexagon-representation-pacs2-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Grm5"</span>,</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Grm5 in logarithmic scale"</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-hexagon-representation-grm5-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Slc32a1"</span>,</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Slc32a1 in logarithmic scale"</span>)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-hexagon-representation-slc32a1-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Gad1"</span>,</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Gad1 in logarithmic scale"</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-hexagon-representation-gad1-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Gad2"</span>,</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Gad2 in logarithmic scale"</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-hexagon-representation-gad2-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Slc17a6"</span>,</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Slc17a6 in logarithmic scale"</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/plt-hexagon-representation-slc17a6-1.pdf" class="img-fluid" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="quantify-and-plot-hexagon-representation-of-feature-interactions-with-spearmans-correlation" class="level4">
+<h4 class="anchored" data-anchor-id="quantify-and-plot-hexagon-representation-of-feature-interactions-with-spearmans-correlation">Quantify and plot hexagon representation of feature interactions with Spearman’s correlation</h4>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Pacs2"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Wdr37 and Pacs2/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/calc-hexagon-representation-spearman-wdr37-pacs2-1.pdf" class="img-fluid" width="4200"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Grm5"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Wdr37 and Grm5/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/calc-hexagon-representation-spearman-wdr37-grm5-1.pdf" class="img-fluid" width="4200"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Slc17a6"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Wdr37 and Slc17a6/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/calc-hexagon-representation-spearman-wdr37-glutamate-1.pdf" class="img-fluid" width="4200"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Pacs2"</span>, <span class="st">"Slc17a6"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Pacs2 and Slc17a6/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/calc-hexagon-representation-spearman-pacs2-glutamate-1.pdf" class="img-fluid" width="4200"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Slc17a6"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Grm5 and Slc17a6/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="local_files/figure-html/calc-hexagon-representation-spearman-grm5-glutamate-1.pdf" class="img-fluid" width="4200"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="save-results" class="level3">
+<h3 class="anchored" data-anchor-id="save-results">Save results</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(l6.srt, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"l6.srt.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.2.2 (2022-10-31)
+ os       Ubuntu 22.04.2 LTS
+ system   x86_64, linux-gnu
+ ui       X11
+ language en_US:en
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       Etc/UTC
+ date     2023-05-04
+ pandoc   2.19.2 @ /opt/python/3.8.8/bin/ (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package              * version    date (UTC) lib source
+ abind                  1.4-5      2016-07-21 [1] RSPM (R 4.2.0)
+ askpass                1.1        2019-01-13 [1] RSPM (R 4.2.0)
+ base64enc              0.1-3      2015-07-28 [1] RSPM (R 4.2.0)
+ beeswarm               0.4.0      2021-06-01 [1] RSPM (R 4.2.0)
+ Biobase              * 2.58.0     2022-11-01 [1] RSPM (R 4.2.2)
+ BiocGenerics         * 0.44.0     2022-11-01 [1] RSPM (R 4.2.2)
+ BiocManager            1.30.20    2023-02-24 [1] RSPM (R 4.2.0)
+ bit                    4.0.5      2022-11-15 [1] RSPM (R 4.2.0)
+ bit64                  4.0.5      2020-08-30 [1] RSPM (R 4.2.0)
+ bitops                 1.0-7      2021-04-24 [1] RSPM (R 4.2.0)
+ circlize               0.4.15     2022-05-10 [1] RSPM (R 4.2.0)
+ cli                    3.6.1      2023-03-23 [1] RSPM (R 4.2.0)
+ cluster                2.1.4      2022-08-22 [1] RSPM (R 4.2.0)
+ codetools              0.2-19     2023-02-01 [1] RSPM (R 4.2.0)
+ colorspace             2.1-0      2023-01-23 [1] RSPM (R 4.2.0)
+ concaveman             1.1.0      2020-05-11 [1] RSPM (R 4.2.0)
+ cowplot              * 1.1.1      2020-12-30 [1] RSPM (R 4.2.0)
+ crayon                 1.5.2      2022-09-29 [1] RSPM (R 4.2.0)
+ curl                   5.0.0      2023-01-12 [1] RSPM (R 4.2.0)
+ data.table             1.14.8     2023-02-17 [1] RSPM (R 4.2.0)
+ DelayedArray           0.24.0     2022-11-01 [1] RSPM (R 4.2.2)
+ deldir                 1.0-6      2021-10-23 [1] RSPM (R 4.2.0)
+ digest                 0.6.31     2022-12-11 [1] RSPM (R 4.2.0)
+ dplyr                * 1.1.2      2023-04-20 [1] RSPM (R 4.2.2)
+ ellipsis               0.3.2      2021-04-29 [1] RSPM (R 4.2.0)
+ entropy                1.3.1      2021-10-02 [1] RSPM (R 4.2.0)
+ evaluate               0.20       2023-01-17 [1] RSPM (R 4.2.0)
+ fansi                  1.0.4      2023-01-22 [1] RSPM (R 4.2.0)
+ farver                 2.1.1      2022-07-06 [1] RSPM (R 4.2.0)
+ fastmap                1.1.1      2023-02-24 [1] RSPM (R 4.2.0)
+ fitdistrplus           1.1-11     2023-04-25 [1] RSPM (R 4.2.2)
+ FNN                    1.1.3.2    2023-03-20 [1] RSPM (R 4.2.0)
+ forcats              * 1.0.0      2023-01-29 [1] RSPM (R 4.2.0)
+ foreach                1.5.2      2022-02-02 [1] RSPM (R 4.2.0)
+ future                 1.32.0     2023-03-07 [1] RSPM (R 4.2.0)
+ future.apply           1.10.0     2022-11-05 [1] RSPM (R 4.2.0)
+ generics               0.1.3      2022-07-05 [1] RSPM (R 4.2.0)
+ GenomeInfoDb         * 1.34.9     2023-02-02 [1] RSPM (R 4.2.2)
+ GenomeInfoDbData       1.2.9      2023-04-30 [1] RSPM (R 4.2.2)
+ GenomicRanges        * 1.50.2     2022-12-16 [1] RSPM (R 4.2.2)
+ ggbeeswarm             0.7.2      2023-04-30 [1] Github (eclarke/ggbeeswarm@3cf58a9)
+ ggforce                0.4.1.9000 2023-04-30 [1] Github (thomasp85/ggforce@9be635c)
+ ggplot2              * 3.4.2      2023-04-03 [1] RSPM (R 4.2.0)
+ ggprism                1.0.4      2023-04-30 [1] Github (csdaw/ggprism@0e411f4)
+ ggrastr                1.0.1      2023-04-30 [1] Github (VPetukhov/ggrastr@7aed9af)
+ ggrepel                0.9.2.9999 2023-04-30 [1] Github (slowkow/ggrepel@fe3b5c3)
+ ggridges               0.5.4      2022-09-26 [1] RSPM (R 4.2.0)
+ ggsci                  3.0.0      2023-04-30 [1] Github (nanxstats/ggsci@028b373)
+ glmnet               * 4.1-7      2023-03-23 [1] RSPM (R 4.2.0)
+ GlobalOptions          0.1.2      2020-06-10 [1] RSPM (R 4.2.0)
+ globals                0.16.2     2022-11-21 [1] RSPM (R 4.2.0)
+ glue                   1.6.2      2022-02-24 [1] RSPM (R 4.2.0)
+ goftest                1.2-3      2021-10-07 [1] RSPM (R 4.2.0)
+ gridExtra              2.3        2017-09-09 [1] RSPM (R 4.2.0)
+ gtable                 0.3.3      2023-03-21 [1] RSPM (R 4.2.0)
+ hdf5r                  1.3.8      2023-01-21 [1] RSPM (R 4.2.2)
+ here                 * 1.0.1      2020-12-13 [1] RSPM (R 4.2.0)
+ hexbin                 1.28.3     2023-03-21 [1] RSPM (R 4.2.0)
+ hms                    1.1.3      2023-03-21 [1] RSPM (R 4.2.0)
+ htmltools              0.5.5      2023-03-23 [1] RSPM (R 4.2.0)
+ htmlwidgets            1.6.2      2023-03-17 [1] RSPM (R 4.2.0)
+ httpuv                 1.6.9      2023-02-14 [1] RSPM (R 4.2.0)
+ httr                   1.4.5      2023-02-24 [1] RSPM (R 4.2.0)
+ ica                    1.0-3      2022-07-08 [1] RSPM (R 4.2.0)
+ igraph                 1.4.1      2023-02-24 [1] RSPM (R 4.2.0)
+ IRanges              * 2.32.0     2022-11-01 [1] RSPM (R 4.2.2)
+ irlba                  2.3.5.1    2022-10-03 [1] RSPM (R 4.2.0)
+ iterators              1.0.14     2022-02-05 [1] RSPM (R 4.2.0)
+ janitor                2.2.0.9000 2023-04-30 [1] Github (sfirke/janitor@d64c8bb)
+ jsonlite               1.8.4      2022-12-06 [1] RSPM (R 4.2.0)
+ KernSmooth             2.23-20    2021-05-03 [1] RSPM (R 4.2.0)
+ knitr                  1.42       2023-01-25 [1] RSPM (R 4.2.0)
+ ks                     1.14.0     2022-11-24 [1] RSPM (R 4.2.0)
+ labeling               0.4.2      2020-10-20 [1] RSPM (R 4.2.0)
+ later                  1.3.0      2021-08-18 [1] RSPM (R 4.2.0)
+ lattice                0.21-8     2023-04-05 [1] RSPM (R 4.2.0)
+ lazyeval               0.2.2      2019-03-15 [1] RSPM (R 4.2.0)
+ leiden                 0.4.3      2022-09-10 [1] RSPM (R 4.2.0)
+ lifecycle              1.0.3      2022-10-07 [1] RSPM (R 4.2.0)
+ liger                  2.0.1      2023-04-30 [1] Github (JEFworks/liger@406dfa4)
+ listenv                0.9.0      2022-12-16 [1] RSPM (R 4.2.0)
+ lmtest                 0.9-40     2022-03-21 [1] RSPM (R 4.2.0)
+ lubridate            * 1.9.2      2023-02-10 [1] RSPM (R 4.2.0)
+ magrittr               2.0.3      2022-03-30 [1] RSPM (R 4.2.0)
+ MASS                   7.3-58.1   2022-08-03 [1] CRAN (R 4.2.2)
+ Matrix               * 1.5-4      2023-04-04 [1] RSPM (R 4.2.0)
+ MatrixGenerics       * 1.10.0     2022-11-01 [1] RSPM (R 4.2.2)
+ matrixStats          * 0.63.0     2022-11-18 [1] RSPM (R 4.2.0)
+ mclust                 6.0.0      2022-10-31 [1] RSPM (R 4.2.0)
+ mgcv                   1.8-42     2023-03-02 [1] RSPM (R 4.2.0)
+ mime                   0.12       2021-09-28 [1] RSPM (R 4.2.0)
+ miniUI                 0.1.1.1    2018-05-18 [1] RSPM (R 4.2.0)
+ munsell                0.5.0      2018-06-12 [1] RSPM (R 4.2.0)
+ mvtnorm                1.1-3      2021-10-08 [1] RSPM (R 4.2.0)
+ Nebulosa             * 1.8.0      2022-11-01 [1] RSPM (R 4.2.2)
+ nlme                   3.1-162    2023-01-31 [1] RSPM (R 4.2.0)
+ NNLM                   0.4.4      2023-04-30 [1] Github (linxihui/NNLM@4574bca)
+ openssl                2.0.6      2023-03-09 [1] RSPM (R 4.2.0)
+ paletteer              1.5.0      2022-10-19 [1] RSPM (R 4.2.0)
+ parallelly             1.35.0     2023-03-23 [1] RSPM (R 4.2.0)
+ patchwork            * 1.1.2.9000 2023-04-30 [1] Github (thomasp85/patchwork@c14c960)
+ pbapply                1.7-0      2023-01-13 [1] RSPM (R 4.2.0)
+ pillar                 1.9.0      2023-03-22 [1] RSPM (R 4.2.0)
+ pkgconfig              2.0.3      2019-09-22 [1] RSPM (R 4.2.0)
+ plotly                 4.10.1     2022-11-07 [1] RSPM (R 4.2.0)
+ plyr                   1.8.8      2022-11-11 [1] RSPM (R 4.2.0)
+ png                    0.1-8      2022-11-29 [1] RSPM (R 4.2.0)
+ polyclip               1.10-4     2022-10-20 [1] RSPM (R 4.2.0)
+ pracma                 2.4.2      2022-09-22 [1] RSPM (R 4.2.0)
+ prismatic              1.1.1      2022-08-15 [1] RSPM (R 4.2.0)
+ progressr              0.13.0     2023-01-10 [1] RSPM (R 4.2.0)
+ promises               1.2.0.1    2021-02-11 [1] RSPM (R 4.2.0)
+ proxy                  0.4-27     2022-06-09 [1] RSPM (R 4.2.0)
+ purrr                * 1.0.1      2023-01-10 [1] RSPM (R 4.2.0)
+ R.methodsS3            1.8.2      2022-06-13 [1] RSPM (R 4.2.0)
+ R.oo                   1.25.0     2022-06-12 [1] RSPM (R 4.2.0)
+ R.utils                2.12.2     2022-11-11 [1] RSPM (R 4.2.0)
+ R6                     2.5.1      2021-08-19 [1] RSPM (R 4.2.0)
+ RANN                   2.6.1      2019-01-08 [1] RSPM (R 4.2.0)
+ RColorBrewer         * 1.1-3      2022-04-03 [1] RSPM (R 4.2.0)
+ Rcpp                   1.0.10     2023-01-22 [1] RSPM (R 4.2.0)
+ RcppAnnoy              0.0.20     2022-10-27 [1] RSPM (R 4.2.0)
+ RCurl                  1.98-1.12  2023-03-27 [1] RSPM (R 4.2.0)
+ readr                * 2.1.4      2023-02-10 [1] RSPM (R 4.2.0)
+ rematch2               2.1.2      2020-05-01 [1] RSPM (R 4.2.0)
+ remotes                2.4.2      2021-11-30 [1] RSPM (R 4.2.0)
+ repr                   1.1.6      2023-01-26 [1] RSPM (R 4.2.0)
+ reshape2               1.4.4      2020-04-09 [1] RSPM (R 4.2.0)
+ reticulate             1.28-9000  2023-04-30 [1] Github (rstudio/reticulate@442c49f)
+ rlang                  1.1.0      2023-03-14 [1] RSPM (R 4.2.0)
+ rmarkdown              2.21       2023-03-26 [1] RSPM (R 4.2.0)
+ ROCR                   1.0-11     2020-05-02 [1] RSPM (R 4.2.0)
+ rprojroot              2.0.3      2022-04-02 [1] RSPM (R 4.2.0)
+ RSpectra               0.16-1     2022-04-24 [1] RSPM (R 4.2.0)
+ rsvd                   1.0.5      2021-04-16 [1] RSPM (R 4.2.0)
+ Rtsne                  0.16       2022-04-17 [1] RSPM (R 4.2.0)
+ S4Vectors            * 0.36.2     2023-02-26 [1] RSPM (R 4.2.2)
+ scales                 1.2.1      2022-08-20 [1] RSPM (R 4.2.0)
+ scattermore            0.8        2022-02-14 [1] RSPM (R 4.2.0)
+ scCustomize          * 1.1.1      2023-04-30 [1] Github (samuel-marsh/scCustomize@d08268d)
+ schex                * 1.12.0     2022-11-01 [1] RSPM (R 4.2.2)
+ sctransform            0.3.5      2022-09-21 [1] RSPM (R 4.2.0)
+ sessioninfo            1.2.2      2021-12-06 [1] RSPM (R 4.2.0)
+ Seurat               * 4.3.0      2022-11-18 [1] RSPM (R 4.2.2)
+ SeuratDisk           * 0.0.0.9020 2023-04-30 [1] Github (mojaveazure/seurat-disk@9b89970)
+ SeuratObject         * 4.1.3      2022-11-07 [1] RSPM (R 4.2.0)
+ SeuratWrappers       * 0.3.1      2023-04-30 [1] Github (satijalab/seurat-wrappers@d28512f)
+ shape                  1.4.6      2021-05-19 [1] RSPM (R 4.2.0)
+ shiny                * 1.7.4      2022-12-15 [1] RSPM (R 4.2.0)
+ SingleCellExperiment * 1.20.1     2023-03-17 [1] RSPM (R 4.2.2)
+ skimr                  2.1.5      2023-04-30 [1] Github (ropensci/skimr@d5126aa)
+ snakecase              0.11.0     2019-05-25 [1] RSPM (R 4.2.0)
+ snow                   0.4-4      2021-10-27 [1] RSPM (R 4.2.0)
+ sp                     1.6-0      2023-01-19 [1] RSPM (R 4.2.0)
+ spatstat.data          3.0-1      2023-03-12 [1] RSPM (R 4.2.0)
+ spatstat.explore       3.1-0      2023-03-14 [1] RSPM (R 4.2.0)
+ spatstat.geom          3.1-0      2023-03-12 [1] RSPM (R 4.2.0)
+ spatstat.random        3.1-4      2023-03-13 [1] RSPM (R 4.2.0)
+ spatstat.sparse        3.0-1      2023-03-12 [1] RSPM (R 4.2.0)
+ spatstat.utils         3.0-2      2023-03-11 [1] RSPM (R 4.2.0)
+ stringi                1.7.12     2023-01-11 [1] RSPM (R 4.2.0)
+ stringr              * 1.5.0      2022-12-02 [1] RSPM (R 4.2.0)
+ SummarizedExperiment * 1.28.0     2022-11-01 [1] RSPM (R 4.2.2)
+ survival               3.5-5      2023-03-12 [1] RSPM (R 4.2.0)
+ swne                 * 0.6.20     2023-04-30 [1] Github (yanwu2014/swne@05fc3ee)
+ systemfonts            1.0.4      2022-02-11 [1] RSPM (R 4.2.0)
+ tensor                 1.5        2012-05-05 [1] RSPM (R 4.2.0)
+ tibble               * 3.2.1      2023-03-20 [1] RSPM (R 4.2.0)
+ tidyr                * 1.3.0      2023-01-24 [1] RSPM (R 4.2.0)
+ tidyselect             1.2.0      2022-10-10 [1] RSPM (R 4.2.0)
+ tidyverse            * 2.0.0.9000 2023-04-30 [1] Github (tidyverse/tidyverse@8ec2e1f)
+ timechange             0.2.0      2023-01-11 [1] RSPM (R 4.2.0)
+ tweenr                 2.0.2      2022-09-06 [1] RSPM (R 4.2.0)
+ tzdb                   0.3.0      2022-03-28 [1] RSPM (R 4.2.0)
+ umap                   0.2.10.0   2023-02-01 [1] RSPM (R 4.2.0)
+ UpSetR               * 1.4.0      2023-04-30 [1] Github (hms-dbmi/UpSetR@b14854a)
+ usedist                0.4.0      2020-03-01 [1] RSPM (R 4.2.0)
+ utf8                   1.2.3      2023-01-31 [1] RSPM (R 4.2.0)
+ uwot                   0.1.14     2022-08-22 [1] RSPM (R 4.2.0)
+ V8                     4.2.2      2022-11-03 [1] RSPM (R 4.2.0)
+ vctrs                  0.6.2      2023-04-19 [1] RSPM (R 4.2.2)
+ vipor                  0.4.5      2017-03-22 [1] RSPM (R 4.2.0)
+ viridis                0.6.2      2021-10-13 [1] RSPM (R 4.2.0)
+ viridisLite            0.4.1      2022-08-22 [1] RSPM (R 4.2.0)
+ withr                  2.5.0      2022-03-03 [1] RSPM (R 4.2.0)
+ xfun                   0.39       2023-04-20 [1] RSPM (R 4.2.2)
+ xtable                 1.8-4      2019-04-21 [1] RSPM (R 4.2.0)
+ XVector                0.38.0     2022-11-01 [1] RSPM (R 4.2.2)
+ yaml                   2.3.7      2023-01-23 [1] RSPM (R 4.2.0)
+ zlibbioc               1.44.0     2022-11-01 [1] RSPM (R 4.2.2)
+ zoo                    1.8-12     2023-04-13 [1] RSPM (R 4.2.2)
+
+ [1] /opt/R/4.2.2/lib/R/library
+
+──────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,571 @@
+---
+title: "Identifying the role of Wdr37 by position and molecular phenotype of expressing neurons in the mouse brain"
+author: "Evgenii O. Tretiakov"
+format:
+  html:
+    toc: true
+    df-print: paged
+    code-fold: true
+    fig-width: 14
+    fig-height: 12
+    fig-dpi: 300
+execute:
+  keep-md: false
+  echo: true
+  error: false
+  message: false
+  warning: false
+  debug: false
+knitr:
+  opts_chunk:
+    autodep: true
+    fig.align: center
+    fig.retina: 2
+---
+
+```{r setup, include = FALSE}
+DOCNAME <- "localisation-of-wdr37"
+NOW <- Sys.time()
+
+# Time chunks during knitting
+knitr::knit_hooks$set(timeit = function(before) {
+  if (before) {
+    print(paste("Start:", Sys.time()))
+    NOW <<- Sys.time()
+  } else {
+    print(paste("Stop:", Sys.time()))
+    print(Sys.time() - NOW)
+  }
+})
+
+knitr::knit_hooks$set(debug = function(before, options, envir) {
+  if (!before) {
+    message(
+      paste(names(envir), as.list(envir),
+        sep = " = ", collapse = "\n"
+      )
+    )
+  }
+})
+
+knitr::opts_chunk$set(
+  cache          = FALSE,
+  dev            = c("pdf", "png"),
+  timeit         = TRUE
+)
+```
+
+## Load data and setup parameters
+
+```{r libraries, cache=FALSE}
+# Load tidyverse infrastructure packages
+library(here)
+library(tidyverse)
+library(RColorBrewer)
+library(glmnet)
+
+# Load packages for scRNA-seq analysis and visualisation
+library(Seurat)
+library(SeuratWrappers)
+library(SeuratDisk)
+library(scCustomize)
+library(swne)
+library(ggplot2)
+library(cowplot)
+library(UpSetR)
+library(patchwork)
+library(Nebulosa)
+library(schex)
+```
+
+### Set paths
+
+```{r paths}
+set_here()
+data_dir <- here("data")
+output_dir <- here("outputs")
+plots_dir <- here(output_dir, "figures")
+tables_dir <- here(output_dir, "tables")
+```
+
+### Load helper functions and gene-sets
+
+```{r source, cache = FALSE}
+source(here("functions.R"))
+source(here("genes.R"))
+```
+
+### Set fixed variables
+
+```{r params-computation, cache = FALSE}
+# set seed
+reseed <- 42
+set.seed(seed = reseed)
+
+# available RAM in kB
+ram <- check_ram()
+
+# available cores
+n.cores <- available_cores(prop2use = .1)
+
+# Parameters for parallel execution
+plan("multisession", workers = n.cores)
+options(
+  future.globals.maxSize = 100000 * 1024^2,
+  future.rng.onMisuse = "ignore"
+)
+plan()
+```
+
+## Load data from Zeisel et al. (2018)
+
+```{r load-data, cache = FALSE}
+l6.neurons <- Connect(filename = here("l6_r1_neurons.loom"), mode = "r")
+l6.neurons
+```
+
+```{r init-srt_close-loom}
+l6.srt <- as.Seurat(l6.neurons)
+l6.neurons$close_all()
+```
+
+show srt object
+```{r srt}
+l6.srt.srt <-
+  Store_Palette_Seurat(
+    seurat_object = l6.srt,
+    palette = rev(brewer.pal(n = 11, name = "Spectral")),
+    palette_name = "div_Colour_Pal"
+  )
+
+l6.srt
+```
+
+show metadata
+```{r summary-meta}
+skimr::skim(l6.srt@meta.data)
+```
+
+Check Violin plots for the expression of the gene of interest (goi) in the different clusters and tissues
+```{r plt-goi-vln-cluster, fig.width = 48, fig.height = 14, fig.fullwidth = TRUE}
+Idents(l6.srt) <- "ClusterName"
+Stacked_VlnPlot(
+  seurat_object = l6.srt, features = goi, x_lab_rotate = TRUE,
+  color_seed = reseed
+)
+```
+
+```{r plt-goi-vln-tissue, fig.width = 32, fig.height = 12, fig.fullwidth = TRUE}
+Idents(l6.srt) <- "Tissue"
+Stacked_VlnPlot(
+  seurat_object = l6.srt, features = goi, x_lab_rotate = TRUE,
+  color_seed = reseed
+)
+```
+
+```{r plt-dotplot-goi-by-tissue, fig.width = 48, fig.height = 5, fig.fullwidth = TRUE}
+DotPlot_scCustom(
+  seurat_object = l6.srt,
+  assay = "RNA",
+  features = goi,
+  flip_axes = TRUE,
+  x_lab_rotate = TRUE,
+  group.by = "Tissue"
+)
+```
+
+```{r plt-dotplot-goi-by-cluster, fig.width = 48, fig.height = 5, fig.fullwidth = TRUE}
+DotPlot_scCustom(
+  seurat_object = l6.srt,
+  assay = "RNA",
+  features = goi,
+  flip_axes = TRUE,
+  x_lab_rotate = TRUE,
+  group.by = "ClusterName"
+)
+```
+
+Extact UMAP and tSNE coordinates from the srt object
+```{r init-srt-dr}
+umap <- l6.srt@meta.data %>%
+  select(X_X, X_Y) %>%
+  as.matrix()
+rownames(umap) <- colnames(l6.srt)
+colnames(umap) <- paste0("UMAP_", 1:2)
+l6.srt[["umap"]] <- CreateDimReducObject(embeddings = umap, key = "UMAP_", assay = DefaultAssay(l6.srt))
+
+tsne <- l6.srt@meta.data %>%
+  select(X_tSNE1, X_tSNE2) %>%
+  as.matrix()
+rownames(tsne) <- colnames(l6.srt)
+colnames(tsne) <- paste0("tSNE_", 1:2)
+l6.srt[["tsne"]] <- CreateDimReducObject(embeddings = tsne, key = "tSNE_", assay = DefaultAssay(l6.srt))
+```
+
+## Exploratory data analysis
+Use standradised pipeline
+```{r init-srt-goi}
+l6.srt <- NormalizeData(l6.srt)
+l6.srt <- FindVariableFeatures(l6.srt, selection.method = "vst", nfeatures = 3500)
+l6.srt <- ScaleData(l6.srt)
+var.genes <- VariableFeatures(l6.srt)
+cell.clusters <- Idents(l6.srt)
+```
+
+Check UMAP and tSNE plots for the expression of the gene of interest (goi) in the different clusters and tissues
+
+
+### tSNE
+
+```{r plt-init-tsne, fig.width = 24, fig.height = 14, fig.fullwidth = TRUE}
+DimPlot_scCustom(
+  l6.srt,
+  reduction = "tsne",
+  pt.size = 0.5,
+  label = TRUE,
+  repel = TRUE,
+  figure_plot = TRUE,
+  color_seed = reseed
+) |
+  DimPlot_scCustom(
+    l6.srt,
+    reduction = "tsne",
+    pt.size = 0.5,
+    group.by = "ClusterName",
+    label = TRUE,
+    repel = TRUE,
+    figure_plot = TRUE,
+    color_seed = reseed
+  ) & NoLegend()
+```
+
+
+### UMAP
+```{r plt-init-umap, fig.width = 24, fig.height = 14, fig.fullwidth = TRUE}
+DimPlot_scCustom(
+  l6.srt,
+  reduction = "umap",
+  pt.size = 0.5,
+  label = TRUE,
+  repel = TRUE,
+  figure_plot = TRUE,
+  color_seed = reseed
+) |
+  DimPlot_scCustom(
+    l6.srt,
+    reduction = "umap",
+    pt.size = 0.5,
+    group.by = "ClusterName",
+    label = TRUE,
+    repel = TRUE,
+    figure_plot = TRUE,
+    color_seed = reseed
+  ) & NoLegend()
+```
+
+```{r plt-init-umap-goi, fig.width = 8, fig.height = 36, fig.fullwidth = TRUE}
+FeaturePlot_scCustom(l6.srt, goi, num_columns = 1, pt.size = 1, order = T, colors_use = viridis::viridis(n = 100, alpha = .6, direction = -1, option = "E"))
+```
+
+```{r plt-init-umap-density-wdr37, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(seurat_object = l6.srt, features = "Wdr37", custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-pacs1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(seurat_object = l6.srt, features = "Pacs1", custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(seurat_object = l6.srt, features = "Pacs2", custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-grm5, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(seurat_object = l6.srt, features = "Grm5", custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+### UMAP density plots of interactions between Wdr37 and other features
+
+```{r plt-init-umap-density-wdr37-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-wdr37-grm5, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Grm5"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-grm5-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+### UMAP density plots of neurotransmitter phenotype with Wdr37 and other features
+
+#### GABA
+
+```{r plt-init-umap-density-slc32a1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(seurat_object = l6.srt, features = c("Slc32a1"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-gad1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(seurat_object = l6.srt, features = c("Gad1"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-gad2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(seurat_object = l6.srt, features = c("Gad2"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+
+#### Glutamate
+
+```{r plt-init-umap-density-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(seurat_object = l6.srt, features = c("Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-wdr37-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-pacs2-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Pacs2", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-grm5-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+## Focused data analysis of Wdr37+ brain regions
+
+```{r subset-srt-goi}
+l6.srt <- subset(l6.srt, idents = c("Hypoth", "MBd", "MBv", "Medulla", "Pons", "Thal"))
+l6.srt <- FindVariableFeatures(l6.srt, selection.method = "vst", nfeatures = 3500)
+l6.srt <- ScaleData(l6.srt)
+var.genes <- VariableFeatures(l6.srt)
+cell.clusters <- Idents(l6.srt)
+```
+
+### Run SWNE
+```{r run-init-swne}
+## Run SWNE
+l6.srt <- RunSWNE(l6.srt,
+  k = 20, genes.embed = goi,
+  return.format = "seurat"
+)
+```
+
+```{r plt-init-swne, fig.width = 24, fig.height = 14, fig.fullwidth = TRUE}
+DimPlot_scCustom(
+  l6.srt,
+  reduction = "swne",
+  pt.size = 0.5,
+  label = TRUE,
+  repel = TRUE,
+  figure_plot = TRUE,
+  color_seed = reseed
+) |
+  DimPlot_scCustom(
+    l6.srt,
+    reduction = "swne",
+    pt.size = 0.5,
+    group.by = "ClusterName",
+    label = TRUE,
+    repel = TRUE,
+    figure_plot = TRUE,
+    color_seed = reseed
+  ) & NoLegend()
+```
+
+### SWNE density plots of interactions between Wdr37 and other features
+
+```{r plt-init-swne-density-wdr37-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal,
+    reduction = "swne",)
+```
+
+```{r plt-init-swne-density-wdr37-grm5, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Grm5"), custom_palette = l6.srt@misc$div_Colour_Pal,
+    reduction = "swne",)
+```
+
+```{r plt-init-swne-density-grm5-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal,
+    reduction = "swne",)
+```
+
+```{r plt-init-swne-density-wdr37-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+    reduction = "swne",)
+```
+
+```{r plt-init-swne-density-pacs2-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Pacs2", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+    reduction = "swne",)
+```
+
+```{r plt-init-swne-density-grm5-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+    reduction = "swne",)
+```
+
+### Calculate hexagon cell representation to quantify interactions between Wdr37 and other features in the SWNE space
+```{r calc-hexagon-representation}
+l6.srt <- make_hexbin(l6.srt,
+  nbins = 80,
+  dimension_reduction = "swne", use_dims = c(1, 2)
+)
+```
+
+
+#### Plot hexagon cell representation
+
+```{r plt-hexagon-representation-density, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+plot_hexbin_density(l6.srt) + ggsci::scale_fill_material("amber")
+```
+
+```{r plt-hexagon-representation-wdr37, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+plot_hexbin_feature_plus(l6.srt,
+  col = "Tissue",
+  mod = "RNA", type = "data", feature = "Wdr37",
+  action = "median", xlab = "SWNE1", ylab = "SWNE2",
+  title = paste0("Median of mRNA expression of Wdr37 in logarithmic scale")
+) + ggsci::scale_fill_material("amber")
+```
+
+```{r plt-hexagon-representation-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+plot_hexbin_feature_plus(l6.srt,
+  col = "Tissue",
+  mod = "RNA", type = "data", feature = "Pacs2",
+  action = "median", xlab = "SWNE1", ylab = "SWNE2",
+  title = paste0("Median of mRNA expression of Pacs2 in logarithmic scale")
+) + ggsci::scale_fill_material("amber")
+```
+
+```{r plt-hexagon-representation-grm5, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+plot_hexbin_feature_plus(l6.srt,
+  col = "Tissue",
+  mod = "RNA", type = "data", feature = "Grm5",
+  action = "median", xlab = "SWNE1", ylab = "SWNE2",
+  title = paste0("Median of mRNA expression of Grm5 in logarithmic scale")
+) + ggsci::scale_fill_material("amber")
+```
+
+```{r plt-hexagon-representation-slc32a1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+plot_hexbin_feature_plus(l6.srt,
+  col = "Tissue",
+  mod = "RNA", type = "data", feature = "Slc32a1",
+  action = "median", xlab = "SWNE1", ylab = "SWNE2",
+  title = paste0("Median of mRNA expression of Slc32a1 in logarithmic scale")
+) + ggsci::scale_fill_material("amber")
+```
+
+```{r plt-hexagon-representation-gad1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+plot_hexbin_feature_plus(l6.srt,
+  col = "Tissue",
+  mod = "RNA", type = "data", feature = "Gad1",
+  action = "median", xlab = "SWNE1", ylab = "SWNE2",
+  title = paste0("Median of mRNA expression of Gad1 in logarithmic scale")
+) + ggsci::scale_fill_material("amber")
+```
+
+```{r plt-hexagon-representation-gad2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+plot_hexbin_feature_plus(l6.srt,
+  col = "Tissue",
+  mod = "RNA", type = "data", feature = "Gad2",
+  action = "median", xlab = "SWNE1", ylab = "SWNE2",
+  title = paste0("Median of mRNA expression of Gad2 in logarithmic scale")
+) + ggsci::scale_fill_material("amber")
+```
+
+```{r plt-hexagon-representation-slc17a6, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+plot_hexbin_feature_plus(l6.srt,
+  col = "Tissue",
+  mod = "RNA", type = "data", feature = "Slc17a6",
+  action = "median", xlab = "SWNE1", ylab = "SWNE2",
+  title = paste0("Median of mRNA expression of Slc17a6 in logarithmic scale")
+) + ggsci::scale_fill_material("amber")
+```
+
+
+#### Quantify and plot hexagon representation of feature interactions with Spearman's correlation
+
+```{r calc-hexagon-representation-spearman-wdr37-pacs2}
+plot_hexbin_interact(l6.srt,
+  type = c("data", "data"),
+  mod = c("RNA", "RNA"), feature = c("Wdr37", "Pacs2"), interact = "corr_spearman",
+  ylab = "SWNE2", xlab = "SWNE1",
+  title = "Interaction between mRNA expression of Wdr37 and Pacs2/nSpearman rho in hexagonal cells representation"
+) +
+  scale_fill_gradient2(
+    midpoint = 0, space = "Lab",
+    low = "navy",
+    mid = "wheat1",
+    high = "orangered1"
+  )
+```
+
+```{r calc-hexagon-representation-spearman-wdr37-grm5}
+plot_hexbin_interact(l6.srt,
+  type = c("data", "data"),
+  mod = c("RNA", "RNA"), feature = c("Wdr37", "Grm5"), interact = "corr_spearman",
+  ylab = "SWNE2", xlab = "SWNE1",
+  title = "Interaction between mRNA expression of Wdr37 and Grm5/nSpearman rho in hexagonal cells representation"
+) +
+  scale_fill_gradient2(
+    midpoint = 0, space = "Lab",
+    low = "navy",
+    mid = "wheat1",
+    high = "orangered1"
+  )
+```
+
+```{r calc-hexagon-representation-spearman-wdr37-glutamate}
+plot_hexbin_interact(l6.srt,
+  type = c("data", "data"),
+  mod = c("RNA", "RNA"), feature = c("Wdr37", "Slc17a6"), interact = "corr_spearman",
+  ylab = "SWNE2", xlab = "SWNE1",
+  title = "Interaction between mRNA expression of Wdr37 and Slc17a6/nSpearman rho in hexagonal cells representation"
+) +
+  scale_fill_gradient2(
+    midpoint = 0, space = "Lab",
+    low = "navy",
+    mid = "wheat1",
+    high = "orangered1"
+  )
+```
+
+```{r calc-hexagon-representation-spearman-pacs2-glutamate}
+plot_hexbin_interact(l6.srt,
+  type = c("data", "data"),
+  mod = c("RNA", "RNA"), feature = c("Pacs2", "Slc17a6"), interact = "corr_spearman",
+  ylab = "SWNE2", xlab = "SWNE1",
+  title = "Interaction between mRNA expression of Pacs2 and Slc17a6/nSpearman rho in hexagonal cells representation"
+) +
+  scale_fill_gradient2(
+    midpoint = 0, space = "Lab",
+    low = "navy",
+    mid = "wheat1",
+    high = "orangered1"
+  )
+```
+
+```{r calc-hexagon-representation-spearman-grm5-glutamate}
+plot_hexbin_interact(l6.srt,
+  type = c("data", "data"),
+  mod = c("RNA", "RNA"), feature = c("Grm5", "Slc17a6"), interact = "corr_spearman",
+  ylab = "SWNE2", xlab = "SWNE1",
+  title = "Interaction between mRNA expression of Grm5 and Slc17a6/nSpearman rho in hexagonal cells representation"
+) +
+  scale_fill_gradient2(
+    midpoint = 0, space = "Lab",
+    low = "navy",
+    mid = "wheat1",
+    high = "orangered1"
+  )
+```
+
+### Save results
+```{r save-results}
+write_rds(l6.srt, file = here("l6.srt.rds"))
+```
+
+```{r session-info}
+sessioninfo::session_info()
+```

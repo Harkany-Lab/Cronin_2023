@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.262">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Evgenii O. Tretiakov">
+
+<title>Run LASSO algorithm to identify the genes that are significant for the expression of Wdr37 in various brain regions that may contain potential cells of interest</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="lasso-all_neurons_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lasso-all_neurons_files/libs/quarto-html/quarto.js"></script>
+<script src="lasso-all_neurons_files/libs/quarto-html/popper.min.js"></script>
+<script src="lasso-all_neurons_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lasso-all_neurons_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lasso-all_neurons_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lasso-all_neurons_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="lasso-all_neurons_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lasso-all_neurons_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lasso-all_neurons_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<link href="lasso-all_neurons_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="lasso-all_neurons_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#load-data-and-setup-parameters" id="toc-load-data-and-setup-parameters" class="nav-link active" data-scroll-target="#load-data-and-setup-parameters">Load data and setup parameters</a>
+  <ul class="collapse">
+  <li><a href="#set-paths" id="toc-set-paths" class="nav-link" data-scroll-target="#set-paths">Set paths</a></li>
+  <li><a href="#load-helper-functions-and-gene-sets" id="toc-load-helper-functions-and-gene-sets" class="nav-link" data-scroll-target="#load-helper-functions-and-gene-sets">Load helper functions and gene-sets</a></li>
+  <li><a href="#set-fixed-variables" id="toc-set-fixed-variables" class="nav-link" data-scroll-target="#set-fixed-variables">Set fixed variables</a></li>
+  </ul></li>
+  <li><a href="#load-data-from-zeisel-et-al.-2018" id="toc-load-data-from-zeisel-et-al.-2018" class="nav-link" data-scroll-target="#load-data-from-zeisel-et-al.-2018">Load data from Zeisel et al.&nbsp;(2018)</a></li>
+  <li><a href="#prepare-data-for-analysis" id="toc-prepare-data-for-analysis" class="nav-link" data-scroll-target="#prepare-data-for-analysis">prepare data for analysis</a></li>
+  <li><a href="#fit-lasso-model" id="toc-fit-lasso-model" class="nav-link" data-scroll-target="#fit-lasso-model">Fit lasso model</a>
+  <ul class="collapse">
+  <li><a href="#get-model-prediction-calculate-importances-and-link-it-to-the-variables" id="toc-get-model-prediction-calculate-importances-and-link-it-to-the-variables" class="nav-link" data-scroll-target="#get-model-prediction-calculate-importances-and-link-it-to-the-variables">Get model prediction, calculate importances and link it to the variables</a>
+  <ul class="collapse">
+  <li><a href="#save-results" id="toc-save-results" class="nav-link" data-scroll-target="#save-results">Save results</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Run LASSO algorithm to identify the genes that are significant for the expression of Wdr37 in various brain regions that may contain potential cells of interest</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Evgenii O. Tretiakov </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="load-data-and-setup-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="load-data-and-setup-parameters">Load data and setup parameters</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load tidyverse infrastructure packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages for scRNA-seq analysis and visualisation</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SeuratWrappers)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SeuratDisk)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gprofiler2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="set-paths" class="level3">
+<h3 class="anchored" data-anchor-id="set-paths">Set paths</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_here</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"data"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>output_dir <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"outputs"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plots_dir <span class="ot">&lt;-</span> <span class="fu">here</span>(output_dir, <span class="st">"figures"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>tables_dir <span class="ot">&lt;-</span> <span class="fu">here</span>(output_dir, <span class="st">"tables"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="load-helper-functions-and-gene-sets" class="level3">
+<h3 class="anchored" data-anchor-id="load-helper-functions-and-gene-sets">Load helper functions and gene-sets</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"functions.R"</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"genes.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="set-fixed-variables" class="level3">
+<h3 class="anchored" data-anchor-id="set-fixed-variables">Set fixed variables</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>reseed <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="at">seed =</span> reseed)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># available RAM in kB</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ram <span class="ot">&lt;-</span> <span class="fu">check_ram</span>()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># available cores</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>n.cores <span class="ot">&lt;-</span> <span class="fu">available_cores</span>(<span class="at">prop2use =</span> .<span class="dv">1</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for parallel execution</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(<span class="st">"multisession"</span>, <span class="at">workers =</span> n.cores)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">future.globals.maxSize =</span> <span class="dv">100000</span> <span class="sc">*</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">future.rng.onMisuse =</span> <span class="st">"ignore"</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>multisession:
+- args: function (..., workers = 8, envir = parent.frame())
+- tweaked: TRUE
+- call: plan("multisession", workers = n.cores)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="load-data-from-zeisel-et-al.-2018" class="level2">
+<h2 class="anchored" data-anchor-id="load-data-from-zeisel-et-al.-2018">Load data from Zeisel et al.&nbsp;(2018)</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="fu">here</span>(<span class="st">"l6.srt.rds"</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>l6.srt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>An object of class Seurat 
+27998 features across 14622 samples within 1 assay 
+Active assay: RNA (27998 features, 3500 variable features)
+ 4 dimensional reductions calculated: umap, tsne, pca, swne</code></pre>
+</div>
+</div>
+</section>
+<section id="prepare-data-for-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="prepare-data-for-analysis">prepare data for analysis</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>norm.counts <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(l6.srt<span class="sc">@</span>assays<span class="sc">$</span>RNA<span class="sc">@</span>data)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">t</span>(norm.counts)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(X) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(l6.srt)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(X[, <span class="st">"Wdr37"</span>])</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> X[, <span class="sc">-</span><span class="fu">which</span>(<span class="fu">colnames</span>(X) <span class="sc">==</span> <span class="st">"Wdr37"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="fit-lasso-model" class="level1">
+<h1>Fit lasso model</h1>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(X, y)<span class="sc">$</span>lambda<span class="fl">.1</span>se</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lasso <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(X, y, <span class="at">lambda =</span> lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="get-model-prediction-calculate-importances-and-link-it-to-the-variables" class="level2">
+<h2 class="anchored" data-anchor-id="get-model-prediction-calculate-importances-and-link-it-to-the-variables">Get model prediction, calculate importances and link it to the variables</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>import <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">tidy</span>(lasso) <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term<span class="sc">!=</span><span class="st">"(Intercept)"</span>) <span class="sc">%&gt;%</span>  <span class="co"># drop the intercept</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(estimate)))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>genes_update <span class="ot">&lt;-</span> <span class="fu">gconvert</span>(</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  import<span class="sc">$</span>term,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">organism =</span> <span class="st">"mmusculus"</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">target =</span> <span class="st">"MGI"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">numeric_ns =</span> <span class="st">""</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">mthreshold =</span> <span class="cn">Inf</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">filter_na =</span> <span class="cn">TRUE</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(name, description)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>import <span class="ot">&lt;-</span> <span class="fu">left_join</span>(import, genes_update, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"term"</span> <span class="ot">=</span> <span class="st">"name"</span>))</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>import</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["step"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["estimate"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["lambda"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["dev.ratio"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["description"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"Snap25","2":"1","3":"0.0192515452","4":"0.03915094","5":"0.07816477","6":"synaptosomal-associated protein 25 [Source:MGI Symbol;Acc:MGI:98331]"},{"1":"Pura","2":"1","3":"0.0186180050","4":"0.03915094","5":"0.07816477","6":"purine rich element binding protein A [Source:MGI Symbol;Acc:MGI:103079]"},{"1":"Syp","2":"1","3":"0.0174705726","4":"0.03915094","5":"0.07816477","6":"synaptophysin [Source:MGI Symbol;Acc:MGI:98467]"},{"1":"Epm2aip1","2":"1","3":"0.0174506089","4":"0.03915094","5":"0.07816477","6":"EPM2A (laforin) interacting protein 1 [Source:MGI Symbol;Acc:MGI:1925031]"},{"1":"Dpysl2","2":"1","3":"0.0170797024","4":"0.03915094","5":"0.07816477","6":"dihydropyrimidinase-like 2 [Source:MGI Symbol;Acc:MGI:1349763]"},{"1":"Vamp1","2":"1","3":"0.0152124969","4":"0.03915094","5":"0.07816477","6":"vesicle-associated membrane protein 1 [Source:MGI Symbol;Acc:MGI:1313276]"},{"1":"Prkar1a","2":"1","3":"0.0137746578","4":"0.03915094","5":"0.07816477","6":"protein kinase, cAMP dependent regulatory, type I, alpha [Source:MGI Symbol;Acc:MGI:104878]"},{"1":"Napb","2":"1","3":"0.0122781595","4":"0.03915094","5":"0.07816477","6":"N-ethylmaleimide sensitive fusion protein attachment protein beta [Source:MGI Symbol;Acc:MGI:104562]"},{"1":"Pja2","2":"1","3":"0.0113314606","4":"0.03915094","5":"0.07816477","6":"praja ring finger ubiquitin ligase 2 [Source:MGI Symbol;Acc:MGI:2159342]"},{"1":"Rab6a","2":"1","3":"0.0102815438","4":"0.03915094","5":"0.07816477","6":"RAB6A, member RAS oncogene family [Source:MGI Symbol;Acc:MGI:894313]"},{"1":"Cplx1","2":"1","3":"0.0101206173","4":"0.03915094","5":"0.07816477","6":"complexin 1 [Source:MGI Symbol;Acc:MGI:104727]"},{"1":"Kpna1","2":"1","3":"0.0093586860","4":"0.03915094","5":"0.07816477","6":"karyopherin (importin) alpha 1 [Source:MGI Symbol;Acc:MGI:103560]"},{"1":"Ywhag","2":"1","3":"0.0093439609","4":"0.03915094","5":"0.07816477","6":"tyrosine 3-monooxygenase/tryptophan 5-monooxygenase activation protein, gamma polypeptide [Source:MGI Symbol;Acc:MGI:108109]"},{"1":"Ina","2":"1","3":"0.0091291413","4":"0.03915094","5":"0.07816477","6":"internexin neuronal intermediate filament protein, alpha [Source:MGI Symbol;Acc:MGI:96568]"},{"1":"Ankrd34b","2":"1","3":"0.0089758094","4":"0.03915094","5":"0.07816477","6":"ankyrin repeat domain 34B [Source:MGI Symbol;Acc:MGI:2443245]"},{"1":"Hacd3","2":"1","3":"0.0075678686","4":"0.03915094","5":"0.07816477","6":"3-hydroxyacyl-CoA dehydratase 3 [Source:MGI Symbol;Acc:MGI:1889341]"},{"1":"Synj1","2":"1","3":"0.0075410014","4":"0.03915094","5":"0.07816477","6":"synaptojanin 1 [Source:MGI Symbol;Acc:MGI:1354961]"},{"1":"Uhmk1","2":"1","3":"0.0045559038","4":"0.03915094","5":"0.07816477","6":"U2AF homology motif (UHM) kinase 1 [Source:MGI Symbol;Acc:MGI:1341908]"},{"1":"Impact","2":"1","3":"0.0045011436","4":"0.03915094","5":"0.07816477","6":"impact, RWD domain protein [Source:MGI Symbol;Acc:MGI:1098233]"},{"1":"Acly","2":"1","3":"0.0044456412","4":"0.03915094","5":"0.07816477","6":"ATP citrate lyase [Source:MGI Symbol;Acc:MGI:103251]"},{"1":"Syn1","2":"1","3":"0.0039706563","4":"0.03915094","5":"0.07816477","6":"synapsin I [Source:MGI Symbol;Acc:MGI:98460]"},{"1":"Map4","2":"1","3":"0.0037178232","4":"0.03915094","5":"0.07816477","6":"microtubule-associated protein 4 [Source:MGI Symbol;Acc:MGI:97178]"},{"1":"Scamp5","2":"1","3":"0.0030265958","4":"0.03915094","5":"0.07816477","6":"secretory carrier membrane protein 5 [Source:MGI Symbol;Acc:MGI:1928948]"},{"1":"Syt11","2":"1","3":"0.0026392769","4":"0.03915094","5":"0.07816477","6":"synaptotagmin XI [Source:MGI Symbol;Acc:MGI:1859547]"},{"1":"Dnajc6","2":"1","3":"0.0025544590","4":"0.03915094","5":"0.07816477","6":"DnaJ heat shock protein family (Hsp40) member C6 [Source:MGI Symbol;Acc:MGI:1919935]"},{"1":"Sdha","2":"1","3":"0.0022830139","4":"0.03915094","5":"0.07816477","6":"succinate dehydrogenase complex, subunit A, flavoprotein (Fp) [Source:MGI Symbol;Acc:MGI:1914195]"},{"1":"Elavl2","2":"1","3":"0.0021752734","4":"0.03915094","5":"0.07816477","6":"ELAV like RNA binding protein 1 [Source:MGI Symbol;Acc:MGI:1100887]"},{"1":"Peg3","2":"1","3":"0.0021654424","4":"0.03915094","5":"0.07816477","6":"paternally expressed 3 [Source:MGI Symbol;Acc:MGI:104748]"},{"1":"Ube2ql1","2":"1","3":"0.0021236853","4":"0.03915094","5":"0.07816477","6":"ubiquitin-conjugating enzyme E2Q family-like 1 [Source:MGI Symbol;Acc:MGI:1924230]"},{"1":"Ogdh","2":"1","3":"0.0020670923","4":"0.03915094","5":"0.07816477","6":"oxoglutarate (alpha-ketoglutarate) dehydrogenase (lipoamide) [Source:MGI Symbol;Acc:MGI:1098267]"},{"1":"Tgoln1","2":"1","3":"0.0020010724","4":"0.03915094","5":"0.07816477","6":"trans-golgi network protein [Source:MGI Symbol;Acc:MGI:105080]"},{"1":"Cadps","2":"1","3":"0.0016574422","4":"0.03915094","5":"0.07816477","6":"Ca2+-dependent secretion activator [Source:MGI Symbol;Acc:MGI:1350922]"},{"1":"Cyfip2","2":"1","3":"0.0013536383","4":"0.03915094","5":"0.07816477","6":"cytoplasmic FMR1 interacting protein 2 [Source:MGI Symbol;Acc:MGI:1924134]"},{"1":"Hmgcs1","2":"1","3":"0.0003159968","4":"0.03915094","5":"0.07816477","6":"3-hydroxy-3-methylglutaryl-Coenzyme A synthase 1 [Source:MGI Symbol;Acc:MGI:107592]"},{"1":"Prkar1b","2":"1","3":"0.0001184793","4":"0.03915094","5":"0.07816477","6":"protein kinase, cAMP dependent regulatory, type I beta [Source:MGI Symbol;Acc:MGI:97759]"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gostres <span class="ot">&lt;-</span> <span class="fu">gost</span>(<span class="at">query =</span> import<span class="sc">$</span>term, <span class="at">organism =</span> <span class="st">"mmusculus"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>gostres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$result
+      query significant      p_value term_size query_size intersection_size
+1   query_1        TRUE 1.379586e-03         4          6                 2
+2   query_1        TRUE 2.634802e-14       218         33                12
+3   query_1        TRUE 1.847049e-13       256         33                12
+4   query_1        TRUE 7.237323e-10      2197         33                19
+5   query_1        TRUE 1.488786e-08       240         33                 9
+6   query_1        TRUE 6.377461e-08       104         33                 7
+7   query_1        TRUE 9.525642e-08       590         33                11
+8   query_1        TRUE 2.482432e-07      3491         33                20
+9   query_1        TRUE 6.178298e-07       365         33                 9
+10  query_1        TRUE 7.924102e-07        78         33                 6
+11  query_1        TRUE 9.986794e-07        81         33                 6
+12  query_1        TRUE 1.069198e-06       155         33                 7
+13  query_1        TRUE 1.069198e-06       155         33                 7
+14  query_1        TRUE 1.657720e-06        88         33                 6
+15  query_1        TRUE 2.795841e-06      1930         33                15
+16  query_1        TRUE 4.169504e-06      1657         33                14
+17  query_1        TRUE 8.871796e-06       210         33                 7
+18  query_1        TRUE 9.288113e-06       912         33                11
+19  query_1        TRUE 1.284373e-05       941         33                11
+20  query_1        TRUE 1.344159e-05       223         33                 7
+21  query_1        TRUE 1.932974e-05       979         33                11
+22  query_1        TRUE 2.938343e-05      2293         33                15
+23  query_1        TRUE 3.122160e-05        24         33                 4
+24  query_1        TRUE 3.484229e-05       580         33                 9
+25  query_1        TRUE 5.501519e-05      1084         33                11
+26  query_1        TRUE 7.985877e-05      4823         33                20
+27  query_1        TRUE 8.622552e-05      1748         33                13
+28  query_1        TRUE 1.095518e-04       895         33                10
+29  query_1        TRUE 1.095518e-04       895         33                10
+30  query_1        TRUE 1.178230e-04       902         33                10
+31  query_1        TRUE 1.243245e-04       673         33                 9
+32  query_1        TRUE 1.708982e-04        95         33                 5
+33  query_1        TRUE 3.138604e-04      4664         33                19
+34  query_1        TRUE 3.414570e-04       214         33                 6
+35  query_1        TRUE 3.803623e-04       768         33                 9
+36  query_1        TRUE 7.434009e-04      5491         33                20
+37  query_1        TRUE 9.756858e-04      2555         33                14
+38  query_1        TRUE 1.506310e-03       147         33                 5
+39  query_1        TRUE 2.304695e-03        68         33                 4
+40  query_1        TRUE 5.415384e-03       344         33                 6
+41  query_1        TRUE 5.475329e-03      2098         33                12
+42  query_1        TRUE 7.579479e-03      2582         33                13
+43  query_1        TRUE 8.696378e-03        28         33                 3
+44  query_1        TRUE 9.397236e-03       841         33                 8
+45  query_1        TRUE 9.691789e-03        29         33                 3
+46  query_1        TRUE 1.312320e-02        32         33                 3
+47  query_1        TRUE 1.442359e-02        33         33                 3
+48  query_1        TRUE 1.698007e-02      3244         33                14
+49  query_1        TRUE 2.081021e-02       118         33                 4
+50  query_1        TRUE 2.097193e-02      1597         33                10
+51  query_1        TRUE 2.137741e-02       253         33                 5
+52  query_1        TRUE 2.223864e-02       120         33                 4
+53  query_1        TRUE 2.801505e-02       697         33                 7
+54  query_1        TRUE 2.827488e-02       698         33                 7
+55  query_1        TRUE 2.868426e-02       128         33                 4
+56  query_1        TRUE 2.971619e-02     12308         33                27
+57  query_1        TRUE 3.714265e-02        45         33                 3
+58  query_1        TRUE 3.839748e-02      1712         33                10
+59  query_1        TRUE 3.526069e-18      1677         34                23
+60  query_1        TRUE 3.829819e-15      2294         34                23
+61  query_1        TRUE 1.855682e-11       744         34                14
+62  query_1        TRUE 1.915180e-09       484         34                11
+63  query_1        TRUE 2.288705e-09     11620         34                33
+64  query_1        TRUE 3.010862e-09       866         34                13
+65  query_1        TRUE 2.263938e-08       610         34                11
+66  query_1        TRUE 2.298297e-08       447         34                10
+67  query_1        TRUE 3.951171e-07       429         34                 9
+68  query_1        TRUE 8.746672e-07       470         34                 9
+69  query_1        TRUE 1.287256e-06       210         34                 7
+70  query_1        TRUE 2.967125e-06       134         34                 6
+71  query_1        TRUE 6.769570e-06      1633         34                13
+72  query_1        TRUE 6.787569e-06       415         34                 8
+73  query_1        TRUE 8.646564e-06       277         34                 7
+74  query_1        TRUE 4.849720e-05       110         34                 5
+75  query_1        TRUE 6.214614e-05        46         34                 4
+76  query_1        TRUE 1.431292e-04       258         34                 6
+77  query_1        TRUE 1.448635e-04      2517         34                14
+78  query_1        TRUE 2.262422e-04       150         34                 5
+79  query_1        TRUE 2.262422e-04       150         34                 5
+80  query_1        TRUE 2.323557e-04      2617         34                14
+81  query_1        TRUE 2.619020e-04      2239         34                13
+82  query_1        TRUE 4.019879e-04       711         34                 8
+83  query_1        TRUE 7.106366e-04        84         34                 4
+84  query_1        TRUE 8.558176e-04        88         34                 4
+85  query_1        TRUE 9.174006e-04       795         34                 8
+86  query_1        TRUE 1.113620e-03     17505         34                33
+87  query_1        TRUE 1.442149e-03       219         34                 5
+88  query_1        TRUE 1.644084e-03       225         34                 5
+89  query_1        TRUE 1.773350e-03         4         34                 2
+90  query_1        TRUE 2.631553e-03       248         34                 5
+91  query_1        TRUE 2.953271e-03         5         34                 2
+92  query_1        TRUE 4.426440e-03         6         34                 2
+93  query_1        TRUE 4.426440e-03         6         34                 2
+94  query_1        TRUE 5.310705e-03       485         34                 6
+95  query_1        TRUE 5.487417e-03      2085         34                11
+96  query_1        TRUE 5.561400e-03      2088         34                11
+97  query_1        TRUE 7.040744e-03       150         34                 4
+98  query_1        TRUE 8.249764e-03         8         34                 2
+99  query_1        TRUE 8.721112e-03        55         34                 3
+100 query_1        TRUE 9.714832e-03       801         34                 7
+101 query_1        TRUE 9.869182e-03       803         34                 7
+102 query_1        TRUE 1.059854e-02         9         34                 2
+103 query_1        TRUE 1.085470e-02      1120         34                 8
+104 query_1        TRUE 1.534871e-02       359         34                 5
+105 query_1        TRUE 1.556997e-02      4282         34                15
+106 query_1        TRUE 1.591842e-02       185         34                 4
+107 query_1        TRUE 1.767273e-02       881         34                 7
+108 query_1        TRUE 1.796578e-02        70         34                 3
+109 query_1        TRUE 2.061224e-02       903         34                 7
+110 query_1        TRUE 2.264274e-02       390         34                 5
+111 query_1        TRUE 2.278163e-02       203         34                 4
+112 query_1        TRUE 3.076765e-02        15         34                 2
+113 query_1        TRUE 4.328266e-02       240         34                 4
+114 query_1        TRUE 4.642561e-02      1381         34                 8
+115 query_1        TRUE 2.241707e-06       110         33                 6
+116 query_1        TRUE 1.674764e-05        75         33                 5
+117 query_1        TRUE 1.777354e-05     10491         33                29
+118 query_1        TRUE 2.118382e-04     16296         33                33
+119 query_1        TRUE 3.395069e-04        15         33                 3
+120 query_1        TRUE 1.498146e-03        24         33                 3
+121 query_1        TRUE 7.289063e-03      2313         33                12
+122 query_1        TRUE 9.157334e-03         6         33                 2
+123 query_1        TRUE 1.370595e-02      1011         33                 8
+124 query_1        TRUE 1.993990e-02        56         33                 3
+125 query_1        TRUE 2.022230e-02       777         33                 7
+126 query_1        TRUE 2.773709e-02       817         33                 7
+127 query_1        TRUE 4.009431e-02        12         33                 2
+128 query_1        TRUE 4.020939e-02       867         33                 7
+129 query_1        TRUE 4.734531e-02        13         33                 2
+130 query_1        TRUE 1.857969e-03       220         15                 7
+131 query_1        TRUE 4.144891e-03        84         15                 5
+132 query_1        TRUE 4.144891e-03        84         15                 5
+133 query_1        TRUE 1.273858e-02        15         15                 3
+134 query_1        TRUE 1.273858e-02        15         15                 3
+135 query_1        TRUE 1.322914e-02      1862         15                14
+136 query_1        TRUE 2.002112e-02        54         15                 4
+137 query_1        TRUE 2.272130e-02        18         15                 3
+138 query_1        TRUE 2.767776e-02       214         15                 6
+139 query_1        TRUE 3.017748e-02       334         15                 7
+140 query_1        TRUE 3.326832e-02       339         15                 7
+141 query_1        TRUE 3.780729e-02       226         15                 6
+142 query_1        TRUE 4.551640e-02       503         15                 8
+143 query_1        TRUE 1.760220e-03        32         17                 3
+144 query_1        TRUE 2.143246e-03        16         22                 3
+145 query_1        TRUE 5.046982e-03        21         22                 3
+146 query_1        TRUE 1.627844e-02         5         22                 2
+147 query_1        TRUE 1.627844e-02         5         22                 2
+148 query_1        TRUE 2.803065e-02       191         22                 5
+149 query_1        TRUE 3.407581e-02         7         22                 2
+150 query_1        TRUE 3.629656e-02        40         22                 3
+151 query_1        TRUE 7.474605e-03      1416         35                11
+152 query_1        TRUE 2.870609e-02      4342         35                18
+153 query_1        TRUE 3.300730e-02       236         35                 5
+     precision      recall            term_id source
+1   0.33333333 0.500000000          CORUM:795  CORUM
+2   0.36363636 0.055045872         GO:0099504  GO:BP
+3   0.36363636 0.046875000         GO:0099003  GO:BP
+4   0.57575758 0.008648157         GO:0051649  GO:BP
+5   0.27272727 0.037500000         GO:0045055  GO:BP
+6   0.21212121 0.067307692         GO:0016079  GO:BP
+7   0.33333333 0.018644068         GO:0060627  GO:BP
+8   0.60606061 0.005729017         GO:0051641  GO:BP
+9   0.27272727 0.024657534         GO:0006887  GO:BP
+10  0.18181818 0.076923077         GO:0048488  GO:BP
+11  0.18181818 0.074074074         GO:0140238  GO:BP
+12  0.21212121 0.045161290         GO:0099643  GO:BP
+13  0.21212121 0.045161290         GO:0007269  GO:BP
+14  0.18181818 0.068181818         GO:0036465  GO:BP
+15  0.45454545 0.007772021         GO:0051049  GO:BP
+16  0.42424242 0.008449004         GO:0016192  GO:BP
+17  0.21212121 0.033333333         GO:0006836  GO:BP
+18  0.33333333 0.012061404         GO:0032940  GO:BP
+19  0.33333333 0.011689692         GO:0099536  GO:BP
+20  0.21212121 0.031390135         GO:0001505  GO:BP
+21  0.33333333 0.011235955         GO:0140352  GO:BP
+22  0.45454545 0.006541648         GO:0032879  GO:BP
+23  0.12121212 0.166666667         GO:0016082  GO:BP
+24  0.27272727 0.015517241         GO:0023061  GO:BP
+25  0.33333333 0.010147601         GO:0046903  GO:BP
+26  0.60606061 0.004146797         GO:0051234  GO:BP
+27  0.39393939 0.007437071         GO:0007267  GO:BP
+28  0.30303030 0.011173184         GO:0098916  GO:BP
+29  0.30303030 0.011173184         GO:0007268  GO:BP
+30  0.30303030 0.011086475         GO:0099537  GO:BP
+31  0.27272727 0.013372957         GO:1903530  GO:BP
+32  0.15151515 0.052631579         GO:0140029  GO:BP
+33  0.57575758 0.004073756         GO:0006810  GO:BP
+34  0.18181818 0.028037383         GO:0017157  GO:BP
+35  0.27272727 0.011718750         GO:0051046  GO:BP
+36  0.60606061 0.003642324         GO:0051179  GO:BP
+37  0.42424242 0.005479452         GO:0007399  GO:BP
+38  0.15151515 0.034013605         GO:1903305  GO:BP
+39  0.12121212 0.058823529         GO:0017156  GO:BP
+40  0.18181818 0.017441860         GO:0016050  GO:BP
+41  0.36363636 0.005719733         GO:0071705  GO:BP
+42  0.39393939 0.005034857         GO:0051128  GO:BP
+43  0.09090909 0.107142857         GO:0031629  GO:BP
+44  0.24242424 0.009512485         GO:0006897  GO:BP
+45  0.09090909 0.103448276         GO:0099500  GO:BP
+46  0.09090909 0.093750000         GO:0048499  GO:BP
+47  0.09090909 0.090909091         GO:0006099  GO:BP
+48  0.42424242 0.004315660         GO:0065008  GO:BP
+49  0.12121212 0.033898305         GO:0006906  GO:BP
+50  0.30303030 0.006261741         GO:0015031  GO:BP
+51  0.15151515 0.019762846         GO:0006898  GO:BP
+52  0.12121212 0.033333333         GO:0090174  GO:BP
+53  0.21212121 0.010043042         GO:0050804  GO:BP
+54  0.21212121 0.010028653         GO:0099177  GO:BP
+55  0.12121212 0.031250000         GO:0048259  GO:BP
+56  0.81818182 0.002193695         GO:0050794  GO:BP
+57  0.09090909 0.066666667         GO:0017158  GO:BP
+58  0.30303030 0.005841121         GO:0045184  GO:BP
+59  0.67647059 0.013714967         GO:0045202  GO:CC
+60  0.67647059 0.010026155         GO:0030054  GO:CC
+61  0.41176471 0.018817204         GO:0098793  GO:CC
+62  0.32352941 0.022727273         GO:0098984  GO:CC
+63  0.97058824 0.002839931         GO:0005737  GO:CC
+64  0.38235294 0.015011547         GO:0098794  GO:CC
+65  0.32352941 0.018032787         GO:0098978  GO:CC
+66  0.29411765 0.022371365         GO:0032279  GO:CC
+67  0.26470588 0.020979021         GO:0014069  GO:CC
+68  0.26470588 0.019148936         GO:0099572  GO:CC
+69  0.20588235 0.033333333         GO:0043209  GO:CC
+70  0.17647059 0.044776119         GO:0098685  GO:CC
+71  0.38235294 0.007960808         GO:0043005  GO:CC
+72  0.23529412 0.019277108         GO:0030133  GO:CC
+73  0.20588235 0.025270758         GO:0070382  GO:CC
+74  0.14705882 0.045454545         GO:0048786  GO:CC
+75  0.11764706 0.086956522         GO:0031201  GO:CC
+76  0.17647059 0.023255814         GO:0008021  GO:CC
+77  0.41176471 0.005562177         GO:0120025  GO:CC
+78  0.14705882 0.033333333         GO:0099501  GO:CC
+79  0.14705882 0.033333333         GO:0030672  GO:CC
+80  0.41176471 0.005349637         GO:0042995  GO:CC
+81  0.38235294 0.005806163         GO:0031982  GO:CC
+82  0.23529412 0.011251758         GO:0099503  GO:CC
+83  0.11764706 0.047619048         GO:0043195  GO:CC
+84  0.11764706 0.045454545         GO:0060076  GO:CC
+85  0.23529412 0.010062893         GO:0030424  GO:CC
+86  0.97058824 0.001885176         GO:0005622  GO:CC
+87  0.14705882 0.022831050         GO:0030658  GO:CC
+88  0.14705882 0.022222222         GO:0042734  GO:CC
+89  0.05882353 0.500000000         GO:0070032  GO:CC
+90  0.14705882 0.020161290         GO:0005802  GO:CC
+91  0.05882353 0.400000000         GO:0070044  GO:CC
+92  0.05882353 0.333333333         GO:0060203  GO:CC
+93  0.05882353 0.333333333         GO:0060199  GO:CC
+94  0.17647059 0.012371134         GO:0097060  GO:CC
+95  0.32352941 0.005275779         GO:0031410  GO:CC
+96  0.32352941 0.005268199         GO:0097708  GO:CC
+97  0.11764706 0.026666667         GO:0030136  GO:CC
+98  0.05882353 0.250000000         GO:0060198  GO:CC
+99  0.08823529 0.054545455         GO:0048787  GO:CC
+100 0.20588235 0.008739076         GO:0030425  GO:CC
+101 0.20588235 0.008717310         GO:0097447  GO:CC
+102 0.05882353 0.222222222         GO:0005952  GO:CC
+103 0.23529412 0.007142857         GO:0036477  GO:CC
+104 0.14705882 0.013927577         GO:0098791  GO:CC
+105 0.44117647 0.003503036         GO:0012505  GO:CC
+106 0.11764706 0.021621622         GO:0043679  GO:CC
+107 0.20588235 0.007945516         GO:0030659  GO:CC
+108 0.08823529 0.042857143         GO:0030665  GO:CC
+109 0.20588235 0.007751938         GO:0012506  GO:CC
+110 0.14705882 0.012820513         GO:0150034  GO:CC
+111 0.11764706 0.019704433         GO:0044306  GO:CC
+112 0.05882353 0.133333333         GO:0098888  GO:CC
+113 0.11764706 0.016666667         GO:0030135  GO:CC
+114 0.23529412 0.005792904         GO:0031984  GO:CC
+115 0.18181818 0.054545455         GO:0000149  GO:MF
+116 0.15151515 0.066666667         GO:0019905  GO:MF
+117 0.87878788 0.002764274         GO:0005515  GO:MF
+118 1.00000000 0.002025037         GO:0005488  GO:MF
+119 0.09090909 0.200000000         GO:0034236  GO:MF
+120 0.09090909 0.125000000         GO:0017075  GO:MF
+121 0.36363636 0.005188067         GO:0019899  GO:MF
+122 0.06060606 0.333333333         GO:0046912  GO:MF
+123 0.24242424 0.007912957         GO:0008092  GO:MF
+124 0.09090909 0.053571429         GO:0051018  GO:MF
+125 0.21212121 0.009009009         GO:0019901  GO:MF
+126 0.21212121 0.008567931         GO:0019904  GO:MF
+127 0.06060606 0.166666667         GO:0004862  GO:MF
+128 0.21212121 0.008073818         GO:0019900  GO:MF
+129 0.06060606 0.153846154         GO:0008603  GO:MF
+130 0.46666667 0.031818182         HP:0002421     HP
+131 0.33333333 0.059523810         HP:0011514     HP
+132 0.33333333 0.059523810         HP:0000651     HP
+133 0.20000000 0.200000000         HP:0008969     HP
+134 0.20000000 0.200000000         HP:0007311     HP
+135 0.93333333 0.007518797         HP:0001250     HP
+136 0.26666667 0.074074074         HP:0025269     HP
+137 0.20000000 0.166666667         HP:0025401     HP
+138 0.40000000 0.028037383         HP:0001558     HP
+139 0.46666667 0.020958084         HP:0001268     HP
+140 0.46666667 0.020648968         HP:0001336     HP
+141 0.40000000 0.026548673         HP:0001557     HP
+142 0.53333333 0.015904573         HP:0001332     HP
+143 0.17647059 0.093750000         KEGG:00020   KEGG
+144 0.13636364 0.187500000  REAC:R-MMU-181429   REAC
+145 0.13636364 0.142857143  REAC:R-MMU-212676   REAC
+146 0.09090909 0.400000000  REAC:R-MMU-164378   REAC
+147 0.09090909 0.400000000  REAC:R-MMU-442720   REAC
+148 0.22727273 0.026178010  REAC:R-MMU-112315   REAC
+149 0.09090909 0.285714286  REAC:R-MMU-163359   REAC
+150 0.13636364 0.075000000 REAC:R-MMU-6811440   REAC
+151 0.31428571 0.007768362          TF:M10416     TF
+152 0.51428571 0.004145555          TF:M07034     TF
+153 0.14285714 0.021186441          TF:M00256     TF
+                                                                 term_name
+1                              SNARE complex (Vamp2, Snap25, Stx1a, Cplx1)
+2                                                   synaptic vesicle cycle
+3                                    vesicle-mediated transport in synapse
+4                                    establishment of localization in cell
+5                                                     regulated exocytosis
+6                                              synaptic vesicle exocytosis
+7                                 regulation of vesicle-mediated transport
+8                                                    cellular localization
+9                                                               exocytosis
+10                                            synaptic vesicle endocytosis
+11                                                 presynaptic endocytosis
+12                                             signal release from synapse
+13                                              neurotransmitter secretion
+14                                              synaptic vesicle recycling
+15                                                 regulation of transport
+16                                              vesicle-mediated transport
+17                                              neurotransmitter transport
+18                                                       secretion by cell
+19                                                      synaptic signaling
+20                                   regulation of neurotransmitter levels
+21                                                        export from cell
+22                                              regulation of localization
+23                                                synaptic vesicle priming
+24                                                          signal release
+25                                                               secretion
+26                                           establishment of localization
+27                                                     cell-cell signaling
+28                                    anterograde trans-synaptic signaling
+29                                          chemical synaptic transmission
+30                                                trans-synaptic signaling
+31                                         regulation of secretion by cell
+32                                                        exocytic process
+33                                                               transport
+34                                                regulation of exocytosis
+35                                                 regulation of secretion
+36                                                            localization
+37                                              nervous system development
+38                               regulation of regulated secretory pathway
+39                                        calcium-ion regulated exocytosis
+40                                                    vesicle organization
+41                                             nitrogen compound transport
+42                           regulation of cellular component organization
+43             synaptic vesicle fusion to presynaptic active zone membrane
+44                                                             endocytosis
+45                                       vesicle fusion to plasma membrane
+46                                  synaptic vesicle membrane organization
+47                                                tricarboxylic acid cycle
+48                                        regulation of biological quality
+49                                                          vesicle fusion
+50                                                       protein transport
+51                                           receptor-mediated endocytosis
+52                                               organelle membrane fusion
+53                            modulation of chemical synaptic transmission
+54                                  regulation of trans-synaptic signaling
+55                             regulation of receptor-mediated endocytosis
+56                                          regulation of cellular process
+57                          regulation of calcium ion-dependent exocytosis
+58                                   establishment of protein localization
+59                                                                 synapse
+60                                                           cell junction
+61                                                              presynapse
+62                                                neuron to neuron synapse
+63                                                               cytoplasm
+64                                                             postsynapse
+65                                                   glutamatergic synapse
+66                                                      asymmetric synapse
+67                                                    postsynaptic density
+68                                             postsynaptic specialization
+69                                                           myelin sheath
+70                                       Schaffer collateral - CA1 synapse
+71                                                       neuron projection
+72                                                       transport vesicle
+73                                                        exocytic vesicle
+74                                                 presynaptic active zone
+75                                                           SNARE complex
+76                                                        synaptic vesicle
+77                                 plasma membrane bounded cell projection
+78                                               exocytic vesicle membrane
+79                                               synaptic vesicle membrane
+80                                                         cell projection
+81                                                                 vesicle
+82                                                       secretory vesicle
+83                                                         terminal bouton
+84                                                      excitatory synapse
+85                                                                    axon
+86                                      intracellular anatomical structure
+87                                              transport vesicle membrane
+88                                                    presynaptic membrane
+89                 synaptobrevin 2-SNAP-25-syntaxin-1a-complexin I complex
+90                                                     trans-Golgi network
+91                             synaptobrevin 2-SNAP-25-syntaxin-1a complex
+92                  clathrin-sculpted glutamate transport vesicle membrane
+93                           clathrin-sculpted glutamate transport vesicle
+94                                                       synaptic membrane
+95                                                     cytoplasmic vesicle
+96                                                   intracellular vesicle
+97                                                 clathrin-coated vesicle
+98                                               clathrin-sculpted vesicle
+99                                        presynaptic active zone membrane
+100                                                               dendrite
+101                                                         dendritic tree
+102                                  cAMP-dependent protein kinase complex
+103                                            somatodendritic compartment
+104                                         Golgi apparatus subcompartment
+105                                                    endomembrane system
+106                                                          axon terminus
+107                                           cytoplasmic vesicle membrane
+108                                       clathrin-coated vesicle membrane
+109                                                       vesicle membrane
+110                                                            distal axon
+111                                             neuron projection terminus
+112                            extrinsic component of presynaptic membrane
+113                                                         coated vesicle
+114                                               organelle subcompartment
+115                                                          SNARE binding
+116                                                       syntaxin binding
+117                                                        protein binding
+118                                                                binding
+119                             protein kinase A catalytic subunit binding
+120                                                     syntaxin-1 binding
+121                                                         enzyme binding
+122 acyltransferase activity, acyl groups converted into alkyl on transfer
+123                                           cytoskeletal protein binding
+124                                               protein kinase A binding
+125                                                 protein kinase binding
+126                                        protein domain specific binding
+127                       cAMP-dependent protein kinase inhibitor activity
+128                                                         kinase binding
+129                       cAMP-dependent protein kinase regulator activity
+130                                                      Poor head control
+131                                        Abnormality of binocular vision
+132                                                               Diplopia
+133                                                   Leg muscle stiffness
+134                                           Short stepped shuffling gait
+135                                                                Seizure
+136                                                           Panic attack
+137                                                           Staring gaze
+138                                               Decreased fetal movement
+139                                                   Mental deterioration
+140                                                              Myoclonus
+141                                          Prenatal movement abnormality
+142                                                               Dystonia
+143                                              Citrate cycle (TCA cycle)
+144                               Serotonin Neurotransmitter Release Cycle
+145                                Dopamine Neurotransmitter Release Cycle
+146                                  PKA activation in glucagon signalling
+147      CREB1 phosphorylation through the activation of Adenylate Cyclase
+148                                  Transmission across Chemical Synapses
+149                             Glucagon signaling in metabolic regulation
+150                        Retrograde transport at the Trans-Golgi-Network
+151                                       Factor: Zfp57; motif: CTGCGGCARN
+152                                     Factor: ATF-1; motif: NNNTGACGTNNN
+153                             Factor: NRSF; motif: TTCAGCACCACGGACAGMGCC
+    effective_domain_size source_order
+1                    1082          117
+2                   27205        20162
+3                   27205        20060
+4                   27205        14650
+5                   27205        11943
+6                   27205         5230
+7                   27205        15648
+8                   27205        14642
+9                   27205         2599
+10                  27205        13519
+11                  27205        20798
+12                  27205        20245
+13                  27205         2866
+14                  27205        10145
+15                  27205        14219
+16                  27205         5292
+17                  27205         2562
+18                  27205         8354
+19                  27205        20177
+20                  27205          335
+21                  27205        20837
+22                  27205         8303
+23                  27205         5233
+24                  27205         7007
+25                  27205        13155
+26                  27205        14353
+27                  27205         2864
+28                  27205        20010
+29                  27205         2865
+30                  27205        20178
+31                  27205        24181
+32                  27205        20726
+33                  27205         2546
+34                  27205         5421
+35                  27205        14216
+36                  27205        14323
+37                  27205         2969
+38                  27205        23988
+39                  27205         5420
+40                  27205         5205
+41                  27205        17823
+42                  27205        14274
+43                  27205         7646
+44                  27205         2607
+45                  27205        20160
+46                  27205        13526
+47                  27205         2003
+48                  27205        16812
+49                  27205         2613
+50                  27205         4917
+51                  27205         2608
+52                  27205        19092
+53                  27205        14016
+54                  27205        20147
+55                  27205        13348
+56                  27205        14008
+57                  27205         5422
+58                  27205        12003
+59                  27262         2147
+60                  27262          871
+61                  27262         3265
+62                  27262         3331
+63                  27262          309
+64                  27262         3266
+65                  27262         3325
+66                  27262         1285
+67                  27262          696
+68                  27262         3384
+69                  27262         1877
+70                  27262         3252
+71                  27262         1851
+72                  27262          912
+73                  27262         2478
+74                  27262         2249
+75                  27262         1060
+76                  27262          488
+77                  27262         3453
+78                  27262         3372
+79                  27262          963
+80                  27262         1850
+81                  27262         1231
+82                  27262         3373
+83                  27262         1870
+84                  27262         2271
+85                  27262          935
+86                  27262          237
+87                  27262          950
+88                  27262         1839
+89                  27262         2415
+90                  27262          364
+91                  27262         2417
+92                  27262         2291
+93                  27262         2287
+94                  27262         2907
+95                  27262         1109
+96                  27262         3146
+97                  27262          915
+98                  27262         2286
+99                  27262         2250
+100                 27262          936
+101                 27262         3014
+102                 27262          473
+103                 27262         1724
+104                 27262         3264
+105                 27262          689
+106                 27262         1964
+107                 27262          951
+108                 27262          956
+109                 27262          690
+110                 27262         3593
+111                 27262         2065
+112                 27262         3307
+113                 27262          914
+114                 27262         1233
+115                 25177           27
+116                 25177         3760
+117                 25177         1496
+118                 25177         1484
+119                 25177         4975
+120                 25177         3151
+121                 25177         3754
+122                 25177         6291
+123                 25177         1548
+124                 25177         8000
+125                 25177         3756
+126                 25177         3759
+127                 25177         1136
+128                 25177         3755
+129                 25177         1804
+130                  4965         1770
+131                  4965         7923
+132                  4965          508
+133                  4965         5597
+134                  4965         4678
+135                  4965          951
+136                  4965         9712
+137                  4965         9836
+138                  4965         1145
+139                  4965          965
+140                  4965         1010
+141                  4965         1144
+142                  4965         1007
+143                  8947            3
+144                  8362         1368
+145                  8362          385
+146                  8362          999
+147                  8362          218
+148                  8362         1608
+149                  8362          580
+150                  8362         1294
+151                 21866         3984
+152                 21866          194
+153                 21866         2460
+                                                                   parents
+1                                                            CORUM:0000000
+2                                                   GO:0051649, GO:0099003
+3                                                               GO:0016192
+4                                                   GO:0051234, GO:0051641
+5                                                               GO:0006887
+6   GO:0007269, GO:0045055, GO:0051649, GO:0099003, GO:0099504, GO:0099643
+7                                       GO:0016192, GO:0050794, GO:0051049
+8                                                   GO:0009987, GO:0051179
+9                                                   GO:0016192, GO:0032940
+10                                                  GO:0036465, GO:0140238
+11                                      GO:0006897, GO:0051649, GO:0099003
+12                                                  GO:0023061, GO:0099536
+13              GO:0001505, GO:0006836, GO:0007268, GO:0051649, GO:0099643
+14                                      GO:0006810, GO:0051649, GO:0099504
+15                                                  GO:0006810, GO:0032879
+16                                                              GO:0006810
+17                                                              GO:0006810
+18                                                  GO:0046903, GO:0140352
+19                                                              GO:0007267
+20                                                              GO:0065008
+21                                                  GO:0006810, GO:0009987
+22                                                  GO:0050789, GO:0051179
+23                                      GO:0016079, GO:0065003, GO:0140029
+24                                                  GO:0007267, GO:0032940
+25                                                              GO:0006810
+26                                                              GO:0051179
+27                                                  GO:0007154, GO:0023052
+28                                                              GO:0099537
+29                                                              GO:0098916
+30                                                              GO:0099536
+31                                      GO:0032940, GO:0050794, GO:0051046
+32                                                  GO:0006887, GO:0009987
+33                                                              GO:0051234
+34                                      GO:0006887, GO:0060627, GO:1903530
+35                                                  GO:0046903, GO:0051049
+36                                                              GO:0008150
+37                                                              GO:0048731
+38                                                  GO:0017157, GO:0045055
+39                                                              GO:0045055
+40                                                              GO:0006996
+41                                                              GO:0006810
+42                                                  GO:0016043, GO:0050794
+43                                      GO:0016079, GO:0048499, GO:0099500
+44                                                              GO:0016192
+45                                                  GO:0006906, GO:0140029
+46                                                  GO:0010256, GO:0061024
+47                                                  GO:0009060, GO:0044238
+48                                                              GO:0065007
+49                                      GO:0016050, GO:0016192, GO:0090174
+50                                      GO:0045184, GO:0071702, GO:0071705
+51                                                              GO:0006897
+52                                                  GO:0048284, GO:0061025
+53                                                  GO:0007268, GO:0099177
+54                                      GO:0010646, GO:0023051, GO:0099537
+55                                                  GO:0006898, GO:0030100
+56                                                  GO:0009987, GO:0050789
+57                                                  GO:0017156, GO:1903305
+58                                                  GO:0008104, GO:0051234
+59                                                              GO:0030054
+60                                                              GO:0110165
+61                                                  GO:0045202, GO:0110165
+62                                                              GO:0045202
+63                                                  GO:0005622, GO:0110165
+64                                                  GO:0045202, GO:0110165
+65                                                              GO:0045202
+66                                                              GO:0098984
+67                                                  GO:0032279, GO:0099572
+68                                                  GO:0043226, GO:0098794
+69                                                              GO:0110165
+70                                                              GO:0045202
+71                                                              GO:0120025
+72                                                  GO:0012505, GO:0031410
+73                                                  GO:0030133, GO:0099503
+74                                                  GO:0098793, GO:0110165
+75                                                  GO:0005737, GO:0098796
+76                                                  GO:0070382, GO:0098793
+77                                                              GO:0042995
+78                                                  GO:0030658, GO:0070382
+79                                                  GO:0008021, GO:0099501
+80                                                              GO:0110165
+81                                                              GO:0043227
+82                                                              GO:0031410
+83                                                  GO:0043679, GO:0098793
+84                                                              GO:0045202
+85                                                              GO:0043005
+86                                                              GO:0110165
+87                                      GO:0030133, GO:0030659, GO:0098588
+88                                                  GO:0097060, GO:0098793
+89                                                              GO:0031201
+90                                                              GO:0098791
+91                                                              GO:0031201
+92                                      GO:0030658, GO:0030665, GO:0060199
+93                                                  GO:0030133, GO:0060198
+94                                                  GO:0045202, GO:0098590
+95                                                  GO:0005737, GO:0097708
+96                                                  GO:0031982, GO:0043231
+97                                                              GO:0030135
+98                                                              GO:0030136
+99                                      GO:0042734, GO:0048786, GO:0097060
+100                                                 GO:0043005, GO:0097447
+101                                                 GO:0036477, GO:0043005
+102                                                 GO:0140535, GO:1902554
+103                                                             GO:0110165
+104                                                 GO:0005794, GO:0031984
+105                                                             GO:0110165
+106                                     GO:0044306, GO:0098793, GO:0150034
+107                                                 GO:0012506, GO:0031410
+108                                                 GO:0030136, GO:0030662
+109                                                 GO:0031090, GO:0031982
+110                                                 GO:0030424, GO:0110165
+111                                                 GO:0043005, GO:0110165
+112                                                 GO:0042734, GO:0099243
+113                                                             GO:0031410
+114                                     GO:0043227, GO:0043229, GO:0110165
+115                                                             GO:0005515
+116                                                             GO:0000149
+117                                                             GO:0005488
+118                                                             GO:0003674
+119                                                 GO:0019901, GO:0051018
+120                                                             GO:0019905
+121                                                             GO:0005515
+122                                                             GO:0016746
+123                                                             GO:0005515
+124                                                             GO:0005515
+125                                                             GO:0019900
+126                                                             GO:0005515
+127                                                 GO:0008603, GO:0030291
+128                                                             GO:0019899
+129                                                             GO:0019887
+130                                                             HP:0001324
+131                                                             HP:0000504
+132                                                             HP:0011514
+133                                                 HP:0001437, HP:0003552
+134                                                             HP:0002362
+135                                                             HP:0012638
+136                                                             HP:0100852
+137                                                             HP:0012373
+138                                                             HP:0001557
+139                                                             HP:0100543
+140                                                             HP:0004305
+141                                                             HP:0034059
+142                                                             HP:0100022
+143                                                             KEGG:00000
+144                                                      REAC:R-MMU-112310
+145                                                      REAC:R-MMU-112310
+146                                                      REAC:R-MMU-163359
+147                                                      REAC:R-MMU-438064
+148                                                      REAC:R-MMU-112316
+149                                                      REAC:R-MMU-163685
+150                                                     REAC:R-MMU-6811442
+151                                                              TF:M00000
+152                                                              TF:M00000
+153                                                              TF:M00000
+
+$meta
+$meta$query_metadata
+$meta$query_metadata$queries
+$meta$query_metadata$queries$query_1
+ [1] "Snap25"   "Pura"     "Syp"      "Epm2aip1" "Dpysl2"   "Vamp1"   
+ [7] "Prkar1a"  "Napb"     "Pja2"     "Rab6a"    "Cplx1"    "Kpna1"   
+[13] "Ywhag"    "Ina"      "Ankrd34b" "Hacd3"    "Synj1"    "Uhmk1"   
+[19] "Impact"   "Acly"     "Syn1"     "Map4"     "Scamp5"   "Syt11"   
+[25] "Dnajc6"   "Sdha"     "Elavl2"   "Peg3"     "Ube2ql1"  "Ogdh"    
+[31] "Tgoln1"   "Cadps"    "Cyfip2"   "Hmgcs1"   "Prkar1b" 
+
+
+$meta$query_metadata$organism
+[1] "mmusculus"
+
+$meta$query_metadata$all_results
+[1] FALSE
+
+$meta$query_metadata$ordered
+[1] FALSE
+
+$meta$query_metadata$no_iea
+[1] FALSE
+
+$meta$query_metadata$sources
+ [1] "GO:MF" "GO:CC" "GO:BP" "KEGG"  "REAC"  "TF"    "MIRNA" "CORUM" "HP"   
+[10] "WP"   
+
+$meta$query_metadata$combined
+[1] FALSE
+
+$meta$query_metadata$aresolve
+named list()
+
+$meta$query_metadata$numeric_ns
+[1] "ENTREZGENE_ACC"
+
+$meta$query_metadata$domain_scope
+[1] "annotated"
+
+$meta$query_metadata$measure_underrepresentation
+[1] FALSE
+
+$meta$query_metadata$significance_threshold_method
+[1] "g_SCS"
+
+$meta$query_metadata$user_threshold
+[1] 0.05
+
+$meta$query_metadata$no_evidences
+[1] TRUE
+
+$meta$query_metadata$highlight
+NULL
+
+
+$meta$result_metadata
+$meta$result_metadata$`GO:MF`
+$meta$result_metadata$`GO:MF`$domain_size
+[1] 25177
+
+$meta$result_metadata$`GO:MF`$number_of_terms
+[1] 11263
+
+$meta$result_metadata$`GO:MF`$threshold
+[1] 0.000136
+
+
+$meta$result_metadata$`GO:CC`
+$meta$result_metadata$`GO:CC`$domain_size
+[1] 27262
+
+$meta$result_metadata$`GO:CC`$number_of_terms
+[1] 4043
+
+$meta$result_metadata$`GO:CC`$threshold
+[1] 0.000255
+
+
+$meta$result_metadata$`GO:BP`
+$meta$result_metadata$`GO:BP`$domain_size
+[1] 27205
+
+$meta$result_metadata$`GO:BP`$number_of_terms
+[1] 27789
+
+$meta$result_metadata$`GO:BP`$threshold
+[1] 3e-05
+
+
+$meta$result_metadata$KEGG
+$meta$result_metadata$KEGG$domain_size
+[1] 8947
+
+$meta$result_metadata$KEGG$number_of_terms
+[1] 563
+
+$meta$result_metadata$KEGG$threshold
+[1] 0.000776
+
+
+$meta$result_metadata$REAC
+$meta$result_metadata$REAC$domain_size
+[1] 8362
+
+$meta$result_metadata$REAC$number_of_terms
+[1] 1718
+
+$meta$result_metadata$REAC$threshold
+[1] 0.000202
+
+
+$meta$result_metadata$TF
+$meta$result_metadata$TF$domain_size
+[1] 21866
+
+$meta$result_metadata$TF$number_of_terms
+[1] 4199
+
+$meta$result_metadata$TF$threshold
+[1] 5.3e-05
+
+
+$meta$result_metadata$MIRNA
+$meta$result_metadata$MIRNA$domain_size
+[1] 7220
+
+$meta$result_metadata$MIRNA$number_of_terms
+[1] 2041
+
+$meta$result_metadata$MIRNA$threshold
+[1] 0.000324
+
+
+$meta$result_metadata$CORUM
+$meta$result_metadata$CORUM$domain_size
+[1] 1082
+
+$meta$result_metadata$CORUM$number_of_terms
+[1] 679
+
+$meta$result_metadata$CORUM$threshold
+[1] 0.00555
+
+
+$meta$result_metadata$HP
+$meta$result_metadata$HP$domain_size
+[1] 4965
+
+$meta$result_metadata$HP$number_of_terms
+[1] 16874
+
+$meta$result_metadata$HP$threshold
+[1] 3.9e-05
+
+
+$meta$result_metadata$WP
+$meta$result_metadata$WP$domain_size
+[1] 4531
+
+$meta$result_metadata$WP$number_of_terms
+[1] 201
+
+$meta$result_metadata$WP$threshold
+[1] 0.00152
+
+
+
+$meta$genes_metadata
+$meta$genes_metadata$failed
+list()
+
+$meta$genes_metadata$ambiguous
+named list()
+
+$meta$genes_metadata$duplicates
+list()
+
+$meta$genes_metadata$query
+$meta$genes_metadata$query$query_1
+$meta$genes_metadata$query$query_1$mapping
+$meta$genes_metadata$query$query_1$mapping$Snap25
+[1] "ENSMUSG00000027273"
+
+$meta$genes_metadata$query$query_1$mapping$Pura
+[1] "ENSMUSG00000043991"
+
+$meta$genes_metadata$query$query_1$mapping$Syp
+[1] "ENSMUSG00000031144"
+
+$meta$genes_metadata$query$query_1$mapping$Epm2aip1
+[1] "ENSMUSG00000046785"
+
+$meta$genes_metadata$query$query_1$mapping$Dpysl2
+[1] "ENSMUSG00000022048"
+
+$meta$genes_metadata$query$query_1$mapping$Vamp1
+[1] "ENSMUSG00000030337"
+
+$meta$genes_metadata$query$query_1$mapping$Prkar1a
+[1] "ENSMUSG00000020612"
+
+$meta$genes_metadata$query$query_1$mapping$Napb
+[1] "ENSMUSG00000027438"
+
+$meta$genes_metadata$query$query_1$mapping$Pja2
+[1] "ENSMUSG00000024083"
+
+$meta$genes_metadata$query$query_1$mapping$Rab6a
+[1] "ENSMUSG00000030704"
+
+$meta$genes_metadata$query$query_1$mapping$Cplx1
+[1] "ENSMUSG00000033615"
+
+$meta$genes_metadata$query$query_1$mapping$Kpna1
+[1] "ENSMUSG00000022905"
+
+$meta$genes_metadata$query$query_1$mapping$Ywhag
+[1] "ENSMUSG00000051391"
+
+$meta$genes_metadata$query$query_1$mapping$Ina
+[1] "ENSMUSG00000034336"
+
+$meta$genes_metadata$query$query_1$mapping$Ankrd34b
+[1] "ENSMUSG00000045034"
+
+$meta$genes_metadata$query$query_1$mapping$Hacd3
+[1] "ENSMUSG00000033629"
+
+$meta$genes_metadata$query$query_1$mapping$Synj1
+[1] "ENSMUSG00000022973"
+
+$meta$genes_metadata$query$query_1$mapping$Uhmk1
+[1] "ENSMUSG00000026667"
+
+$meta$genes_metadata$query$query_1$mapping$Impact
+[1] "ENSMUSG00000024423"
+
+$meta$genes_metadata$query$query_1$mapping$Acly
+[1] "ENSMUSG00000020917"
+
+$meta$genes_metadata$query$query_1$mapping$Syn1
+[1] "ENSMUSG00000037217"
+
+$meta$genes_metadata$query$query_1$mapping$Map4
+[1] "ENSMUSG00000032479"
+
+$meta$genes_metadata$query$query_1$mapping$Scamp5
+[1] "ENSMUSG00000040722"
+
+$meta$genes_metadata$query$query_1$mapping$Syt11
+[1] "ENSMUSG00000068923"
+
+$meta$genes_metadata$query$query_1$mapping$Dnajc6
+[1] "ENSMUSG00000028528"
+
+$meta$genes_metadata$query$query_1$mapping$Sdha
+[1] "ENSMUSG00000021577"
+
+$meta$genes_metadata$query$query_1$mapping$Elavl2
+[1] "ENSMUSG00000008489"
+
+$meta$genes_metadata$query$query_1$mapping$Peg3
+[1] "ENSMUSG00000002265"
+
+$meta$genes_metadata$query$query_1$mapping$Ube2ql1
+[1] "ENSMUSG00000052981"
+
+$meta$genes_metadata$query$query_1$mapping$Ogdh
+[1] "ENSMUSG00000020456"
+
+$meta$genes_metadata$query$query_1$mapping$Tgoln1
+[1] "ENSMUSG00000056429"
+
+$meta$genes_metadata$query$query_1$mapping$Cadps
+[1] "ENSMUSG00000054423"
+
+$meta$genes_metadata$query$query_1$mapping$Cyfip2
+[1] "ENSMUSG00000020340"
+
+$meta$genes_metadata$query$query_1$mapping$Hmgcs1
+[1] "ENSMUSG00000093930"
+
+$meta$genes_metadata$query$query_1$mapping$Prkar1b
+[1] "ENSMUSG00000025855"
+
+
+$meta$genes_metadata$query$query_1$ensgs
+ [1] "ENSMUSG00000027273" "ENSMUSG00000043991" "ENSMUSG00000031144"
+ [4] "ENSMUSG00000046785" "ENSMUSG00000022048" "ENSMUSG00000030337"
+ [7] "ENSMUSG00000020612" "ENSMUSG00000027438" "ENSMUSG00000024083"
+[10] "ENSMUSG00000030704" "ENSMUSG00000033615" "ENSMUSG00000022905"
+[13] "ENSMUSG00000051391" "ENSMUSG00000034336" "ENSMUSG00000045034"
+[16] "ENSMUSG00000033629" "ENSMUSG00000022973" "ENSMUSG00000026667"
+[19] "ENSMUSG00000024423" "ENSMUSG00000020917" "ENSMUSG00000037217"
+[22] "ENSMUSG00000032479" "ENSMUSG00000040722" "ENSMUSG00000068923"
+[25] "ENSMUSG00000028528" "ENSMUSG00000021577" "ENSMUSG00000008489"
+[28] "ENSMUSG00000002265" "ENSMUSG00000052981" "ENSMUSG00000020456"
+[31] "ENSMUSG00000056429" "ENSMUSG00000054423" "ENSMUSG00000020340"
+[34] "ENSMUSG00000093930" "ENSMUSG00000025855"
+
+
+
+
+$meta$timestamp
+[1] "2023-05-04T18:11:32.532675+00:00"
+
+$meta$version
+[1] "e109_eg56_p17_1d3191d"</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">gostplot</span>(gostres, <span class="at">capped =</span> <span class="cn">FALSE</span>, <span class="at">interactive =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="lasso-all_neurons_files/figure-html/genes-update-1.pdf" class="img-fluid" width="4200"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="save-results" class="level3">
+<h3 class="anchored" data-anchor-id="save-results">Save results</h3>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(import, <span class="at">file =</span> <span class="fu">here</span>(tables_dir, <span class="st">"brain-selected-wdr37-features-importance-glm_lasso.csv"</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(gostres<span class="sc">$</span>result, <span class="at">file =</span> <span class="fu">here</span>(tables_dir, <span class="st">"brain-selected-wdr37-features-importance-glm_lasso-enrichment.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.2.2 (2022-10-31)
+ os       Ubuntu 22.04.2 LTS
+ system   x86_64, linux-gnu
+ ui       X11
+ language en_US:en
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       Etc/UTC
+ date     2023-05-04
+ pandoc   2.19.2 @ /opt/python/3.8.8/bin/ (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package          * version    date (UTC) lib source
+ abind              1.4-5      2016-07-21 [1] RSPM (R 4.2.0)
+ backports          1.4.1      2021-12-13 [1] RSPM (R 4.2.0)
+ BiocManager        1.30.20    2023-02-24 [1] RSPM (R 4.2.0)
+ bit                4.0.5      2022-11-15 [1] RSPM (R 4.2.0)
+ bit64              4.0.5      2020-08-30 [1] RSPM (R 4.2.0)
+ bitops             1.0-7      2021-04-24 [1] RSPM (R 4.2.0)
+ broom              1.0.4      2023-03-11 [1] RSPM (R 4.2.0)
+ cli                3.6.1      2023-03-23 [1] RSPM (R 4.2.0)
+ cluster            2.1.4      2022-08-22 [1] RSPM (R 4.2.0)
+ codetools          0.2-19     2023-02-01 [1] RSPM (R 4.2.0)
+ colorspace         2.1-0      2023-01-23 [1] RSPM (R 4.2.0)
+ cowplot            1.1.1      2020-12-30 [1] RSPM (R 4.2.0)
+ crayon             1.5.2      2022-09-29 [1] RSPM (R 4.2.0)
+ data.table         1.14.8     2023-02-17 [1] RSPM (R 4.2.0)
+ deldir             1.0-6      2021-10-23 [1] RSPM (R 4.2.0)
+ digest             0.6.31     2022-12-11 [1] RSPM (R 4.2.0)
+ dplyr            * 1.1.2      2023-04-20 [1] RSPM (R 4.2.2)
+ ellipsis           0.3.2      2021-04-29 [1] RSPM (R 4.2.0)
+ evaluate           0.20       2023-01-17 [1] RSPM (R 4.2.0)
+ fansi              1.0.4      2023-01-22 [1] RSPM (R 4.2.0)
+ farver             2.1.1      2022-07-06 [1] RSPM (R 4.2.0)
+ fastmap            1.1.1      2023-02-24 [1] RSPM (R 4.2.0)
+ fitdistrplus       1.1-11     2023-04-25 [1] RSPM (R 4.2.2)
+ forcats          * 1.0.0      2023-01-29 [1] RSPM (R 4.2.0)
+ foreach            1.5.2      2022-02-02 [1] RSPM (R 4.2.0)
+ future             1.32.0     2023-03-07 [1] RSPM (R 4.2.0)
+ future.apply       1.10.0     2022-11-05 [1] RSPM (R 4.2.0)
+ generics           0.1.3      2022-07-05 [1] RSPM (R 4.2.0)
+ ggplot2          * 3.4.2      2023-04-03 [1] RSPM (R 4.2.0)
+ ggrepel            0.9.2.9999 2023-04-30 [1] Github (slowkow/ggrepel@fe3b5c3)
+ ggridges           0.5.4      2022-09-26 [1] RSPM (R 4.2.0)
+ glmnet           * 4.1-7      2023-03-23 [1] RSPM (R 4.2.0)
+ globals            0.16.2     2022-11-21 [1] RSPM (R 4.2.0)
+ glue               1.6.2      2022-02-24 [1] RSPM (R 4.2.0)
+ goftest            1.2-3      2021-10-07 [1] RSPM (R 4.2.0)
+ gprofiler2       * 0.2.1      2021-08-23 [1] RSPM (R 4.2.0)
+ gridExtra          2.3        2017-09-09 [1] RSPM (R 4.2.0)
+ gtable             0.3.3      2023-03-21 [1] RSPM (R 4.2.0)
+ hdf5r              1.3.8      2023-01-21 [1] RSPM (R 4.2.2)
+ here             * 1.0.1      2020-12-13 [1] RSPM (R 4.2.0)
+ hms                1.1.3      2023-03-21 [1] RSPM (R 4.2.0)
+ htmltools          0.5.5      2023-03-23 [1] RSPM (R 4.2.0)
+ htmlwidgets        1.6.2      2023-03-17 [1] RSPM (R 4.2.0)
+ httpuv             1.6.9      2023-02-14 [1] RSPM (R 4.2.0)
+ httr               1.4.5      2023-02-24 [1] RSPM (R 4.2.0)
+ ica                1.0-3      2022-07-08 [1] RSPM (R 4.2.0)
+ igraph             1.4.1      2023-02-24 [1] RSPM (R 4.2.0)
+ irlba              2.3.5.1    2022-10-03 [1] RSPM (R 4.2.0)
+ iterators          1.0.14     2022-02-05 [1] RSPM (R 4.2.0)
+ jsonlite           1.8.4      2022-12-06 [1] RSPM (R 4.2.0)
+ KernSmooth         2.23-20    2021-05-03 [1] RSPM (R 4.2.0)
+ knitr              1.42       2023-01-25 [1] RSPM (R 4.2.0)
+ labeling           0.4.2      2020-10-20 [1] RSPM (R 4.2.0)
+ later              1.3.0      2021-08-18 [1] RSPM (R 4.2.0)
+ lattice            0.21-8     2023-04-05 [1] RSPM (R 4.2.0)
+ lazyeval           0.2.2      2019-03-15 [1] RSPM (R 4.2.0)
+ leiden             0.4.3      2022-09-10 [1] RSPM (R 4.2.0)
+ lifecycle          1.0.3      2022-10-07 [1] RSPM (R 4.2.0)
+ listenv            0.9.0      2022-12-16 [1] RSPM (R 4.2.0)
+ lmtest             0.9-40     2022-03-21 [1] RSPM (R 4.2.0)
+ lubridate        * 1.9.2      2023-02-10 [1] RSPM (R 4.2.0)
+ magrittr           2.0.3      2022-03-30 [1] RSPM (R 4.2.0)
+ MASS               7.3-58.1   2022-08-03 [1] CRAN (R 4.2.2)
+ Matrix           * 1.5-4      2023-04-04 [1] RSPM (R 4.2.0)
+ matrixStats        0.63.0     2022-11-18 [1] RSPM (R 4.2.0)
+ mime               0.12       2021-09-28 [1] RSPM (R 4.2.0)
+ miniUI             0.1.1.1    2018-05-18 [1] RSPM (R 4.2.0)
+ munsell            0.5.0      2018-06-12 [1] RSPM (R 4.2.0)
+ nlme               3.1-162    2023-01-31 [1] RSPM (R 4.2.0)
+ parallelly         1.35.0     2023-03-23 [1] RSPM (R 4.2.0)
+ patchwork          1.1.2.9000 2023-04-30 [1] Github (thomasp85/patchwork@c14c960)
+ pbapply            1.7-0      2023-01-13 [1] RSPM (R 4.2.0)
+ pillar             1.9.0      2023-03-22 [1] RSPM (R 4.2.0)
+ pkgconfig          2.0.3      2019-09-22 [1] RSPM (R 4.2.0)
+ plotly             4.10.1     2022-11-07 [1] RSPM (R 4.2.0)
+ plyr               1.8.8      2022-11-11 [1] RSPM (R 4.2.0)
+ png                0.1-8      2022-11-29 [1] RSPM (R 4.2.0)
+ polyclip           1.10-4     2022-10-20 [1] RSPM (R 4.2.0)
+ progressr          0.13.0     2023-01-10 [1] RSPM (R 4.2.0)
+ promises           1.2.0.1    2021-02-11 [1] RSPM (R 4.2.0)
+ purrr            * 1.0.1      2023-01-10 [1] RSPM (R 4.2.0)
+ R.methodsS3        1.8.2      2022-06-13 [1] RSPM (R 4.2.0)
+ R.oo               1.25.0     2022-06-12 [1] RSPM (R 4.2.0)
+ R.utils            2.12.2     2022-11-11 [1] RSPM (R 4.2.0)
+ R6                 2.5.1      2021-08-19 [1] RSPM (R 4.2.0)
+ RANN               2.6.1      2019-01-08 [1] RSPM (R 4.2.0)
+ RColorBrewer     * 1.1-3      2022-04-03 [1] RSPM (R 4.2.0)
+ Rcpp               1.0.10     2023-01-22 [1] RSPM (R 4.2.0)
+ RcppAnnoy          0.0.20     2022-10-27 [1] RSPM (R 4.2.0)
+ RCurl              1.98-1.12  2023-03-27 [1] RSPM (R 4.2.0)
+ readr            * 2.1.4      2023-02-10 [1] RSPM (R 4.2.0)
+ remotes            2.4.2      2021-11-30 [1] RSPM (R 4.2.0)
+ reshape2           1.4.4      2020-04-09 [1] RSPM (R 4.2.0)
+ reticulate         1.28-9000  2023-04-30 [1] Github (rstudio/reticulate@442c49f)
+ rlang              1.1.0      2023-03-14 [1] RSPM (R 4.2.0)
+ rmarkdown          2.21       2023-03-26 [1] RSPM (R 4.2.0)
+ ROCR               1.0-11     2020-05-02 [1] RSPM (R 4.2.0)
+ rprojroot          2.0.3      2022-04-02 [1] RSPM (R 4.2.0)
+ rsvd               1.0.5      2021-04-16 [1] RSPM (R 4.2.0)
+ Rtsne              0.16       2022-04-17 [1] RSPM (R 4.2.0)
+ scales             1.2.1      2022-08-20 [1] RSPM (R 4.2.0)
+ scattermore        0.8        2022-02-14 [1] RSPM (R 4.2.0)
+ sctransform        0.3.5      2022-09-21 [1] RSPM (R 4.2.0)
+ sessioninfo        1.2.2      2021-12-06 [1] RSPM (R 4.2.0)
+ Seurat           * 4.3.0      2022-11-18 [1] RSPM (R 4.2.2)
+ SeuratDisk       * 0.0.0.9020 2023-04-30 [1] Github (mojaveazure/seurat-disk@9b89970)
+ SeuratObject     * 4.1.3      2022-11-07 [1] RSPM (R 4.2.0)
+ SeuratWrappers   * 0.3.1      2023-04-30 [1] Github (satijalab/seurat-wrappers@d28512f)
+ shape              1.4.6      2021-05-19 [1] RSPM (R 4.2.0)
+ shiny              1.7.4      2022-12-15 [1] RSPM (R 4.2.0)
+ sp                 1.6-0      2023-01-19 [1] RSPM (R 4.2.0)
+ spatstat.data      3.0-1      2023-03-12 [1] RSPM (R 4.2.0)
+ spatstat.explore   3.1-0      2023-03-14 [1] RSPM (R 4.2.0)
+ spatstat.geom      3.1-0      2023-03-12 [1] RSPM (R 4.2.0)
+ spatstat.random    3.1-4      2023-03-13 [1] RSPM (R 4.2.0)
+ spatstat.sparse    3.0-1      2023-03-12 [1] RSPM (R 4.2.0)
+ spatstat.utils     3.0-2      2023-03-11 [1] RSPM (R 4.2.0)
+ stringi            1.7.12     2023-01-11 [1] RSPM (R 4.2.0)
+ stringr          * 1.5.0      2022-12-02 [1] RSPM (R 4.2.0)
+ survival           3.5-5      2023-03-12 [1] RSPM (R 4.2.0)
+ tensor             1.5        2012-05-05 [1] RSPM (R 4.2.0)
+ tibble           * 3.2.1      2023-03-20 [1] RSPM (R 4.2.0)
+ tidyr            * 1.3.0      2023-01-24 [1] RSPM (R 4.2.0)
+ tidyselect         1.2.0      2022-10-10 [1] RSPM (R 4.2.0)
+ tidyverse        * 2.0.0.9000 2023-04-30 [1] Github (tidyverse/tidyverse@8ec2e1f)
+ timechange         0.2.0      2023-01-11 [1] RSPM (R 4.2.0)
+ tzdb               0.3.0      2022-03-28 [1] RSPM (R 4.2.0)
+ utf8               1.2.3      2023-01-31 [1] RSPM (R 4.2.0)
+ uwot               0.1.14     2022-08-22 [1] RSPM (R 4.2.0)
+ vctrs              0.6.2      2023-04-19 [1] RSPM (R 4.2.2)
+ viridisLite        0.4.1      2022-08-22 [1] RSPM (R 4.2.0)
+ vroom              1.6.1      2023-01-22 [1] RSPM (R 4.2.0)
+ withr              2.5.0      2022-03-03 [1] RSPM (R 4.2.0)
+ xfun               0.39       2023-04-20 [1] RSPM (R 4.2.2)
+ xtable             1.8-4      2019-04-21 [1] RSPM (R 4.2.0)
+ yaml               2.3.7      2023-01-23 [1] RSPM (R 4.2.0)
+ zoo                1.8-12     2023-04-13 [1] RSPM (R 4.2.2)
+
+ [1] /opt/R/4.2.2/lib/R/library
+
+──────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
