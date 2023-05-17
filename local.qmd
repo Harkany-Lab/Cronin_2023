@@ -339,7 +339,10 @@ Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Slc17a6"),
 ## Focused data analysis of Wdr37+ brain regions
 
 ```{r subset-srt-goi}
-l6.srt <- subset(l6.srt, idents = c("Hypoth", "MBd", "MBv", "Medulla", "Pons", "Thal"))
+ca1.srt <- subset(l6.srt, idents = "CA1")
+ca1.srt <- FindVariableFeatures(ca1.srt, selection.method = "vst", nfeatures = 3500)
+ca1.srt <- ScaleData(ca1.srt)
+l6.srt <- subset(l6.srt, idents = c("CA1", "Hypoth", "MBd", "MBv", "Medulla", "Pons", "Thal"))
 l6.srt <- FindVariableFeatures(l6.srt, selection.method = "vst", nfeatures = 3500)
 l6.srt <- ScaleData(l6.srt)
 var.genes <- VariableFeatures(l6.srt)
@@ -353,9 +356,74 @@ l6.srt <- RunSWNE(l6.srt,
   k = 20, genes.embed = goi,
   return.format = "seurat"
 )
+ca1.srt <- RunSWNE(ca1.srt,
+  k = 20, genes.embed = goi,
+  return.format = "seurat"
+)
 ```
 
-```{r plt-init-swne, fig.width = 24, fig.height = 14, fig.fullwidth = TRUE}
+### Plot SWNE
+
+```{r plt-init-swne-ca1}
+DimPlot_scCustom(
+  ca1.srt,
+  reduction = "swne",
+  pt.size = 0.5,
+  group.by = "ClusterName",
+  label = TRUE,
+  repel = TRUE,
+  figure_plot = TRUE,
+  color_seed = reseed
+) & NoLegend()
+```
+
+### SWNE density plots of interactions between Wdr37 and other features
+
+```{r plt-ca1-swne-density-wdr37-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = ca1.srt, features = c("Wdr37", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
+```{r plt-ca1-swne-density-wdr37-grm5, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = ca1.srt, features = c("Wdr37", "Grm5"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
+```{r plt-ca1-swne-density-grm5-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = ca1.srt, features = c("Grm5", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
+```{r plt-ca1-swne-density-wdr37-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = ca1.srt, features = c("Wdr37", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
+```{r plt-ca1-swne-density-pacs2-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = ca1.srt, features = c("Pacs2", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
+```{r plt-ca1-swne-density-grm5-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = ca1.srt, features = c("Grm5", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
+### Plot SWNE of selected regions
+
+```{r plt-init-swne-l6, fig.width = 24, fig.height = 14, fig.fullwidth = TRUE}
 DimPlot_scCustom(
   l6.srt,
   reduction = "swne",
@@ -380,33 +448,45 @@ DimPlot_scCustom(
 ### SWNE density plots of interactions between Wdr37 and other features
 
 ```{r plt-init-swne-density-wdr37-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
-Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal,
-    reduction = "swne",)
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Wdr37", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
 ```
 
 ```{r plt-init-swne-density-wdr37-grm5, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
-Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Grm5"), custom_palette = l6.srt@misc$div_Colour_Pal,
-    reduction = "swne",)
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Wdr37", "Grm5"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
 ```
 
 ```{r plt-init-swne-density-grm5-pacs2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
-Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal,
-    reduction = "swne",)
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Grm5", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
 ```
 
 ```{r plt-init-swne-density-wdr37-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
-Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
-    reduction = "swne",)
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Wdr37", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
 ```
 
 ```{r plt-init-swne-density-pacs2-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
-Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Pacs2", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
-    reduction = "swne",)
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Pacs2", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
 ```
 
 ```{r plt-init-swne-density-grm5-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
-Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
-    reduction = "swne",)
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Grm5", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
 ```
 
 ### Calculate hexagon cell representation to quantify interactions between Wdr37 and other features in the SWNE space
