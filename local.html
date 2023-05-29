@@ -128,10 +128,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#focused-data-analysis-of-wdr37-brain-regions" id="toc-focused-data-analysis-of-wdr37-brain-regions" class="nav-link" data-scroll-target="#focused-data-analysis-of-wdr37-brain-regions">Focused data analysis of Wdr37+ brain regions</a>
   <ul class="collapse">
-  <li><a href="#run-swne" id="toc-run-swne" class="nav-link" data-scroll-target="#run-swne">Run SWNE</a></li>
-  <li><a href="#plot-swne" id="toc-plot-swne" class="nav-link" data-scroll-target="#plot-swne">Plot SWNE</a></li>
-  <li><a href="#swne-density-plots-of-interactions-between-wdr37-and-other-features" id="toc-swne-density-plots-of-interactions-between-wdr37-and-other-features" class="nav-link" data-scroll-target="#swne-density-plots-of-interactions-between-wdr37-and-other-features">SWNE density plots of interactions between Wdr37 and other features</a></li>
-  <li><a href="#plot-swne-of-selected-regions" id="toc-plot-swne-of-selected-regions" class="nav-link" data-scroll-target="#plot-swne-of-selected-regions">Plot SWNE of selected regions</a></li>
+  <li><a href="#subset-ca1-only" id="toc-subset-ca1-only" class="nav-link" data-scroll-target="#subset-ca1-only">Subset CA1 only</a></li>
+  <li><a href="#plot-swne-of-selected-regions-ca1-hypothalamus-midbrain-medulla-pons-thalamus" id="toc-plot-swne-of-selected-regions-ca1-hypothalamus-midbrain-medulla-pons-thalamus" class="nav-link" data-scroll-target="#plot-swne-of-selected-regions-ca1-hypothalamus-midbrain-medulla-pons-thalamus">Plot SWNE of selected regions: CA1, Hypothalamus, Midbrain, Medulla, Pons, Thalamus</a></li>
   <li><a href="#swne-density-plots-of-interactions-between-wdr37-and-other-features-1" id="toc-swne-density-plots-of-interactions-between-wdr37-and-other-features-1" class="nav-link" data-scroll-target="#swne-density-plots-of-interactions-between-wdr37-and-other-features-1">SWNE density plots of interactions between Wdr37 and other features</a></li>
   <li><a href="#calculate-hexagon-cell-representation-to-quantify-interactions-between-wdr37-and-other-features-in-the-swne-space" id="toc-calculate-hexagon-cell-representation-to-quantify-interactions-between-wdr37-and-other-features-in-the-swne-space" class="nav-link" data-scroll-target="#calculate-hexagon-cell-representation-to-quantify-interactions-between-wdr37-and-other-features-in-the-swne-space">Calculate hexagon cell representation to quantify interactions between Wdr37 and other features in the SWNE space</a></li>
   <li><a href="#save-results" id="toc-save-results" class="nav-link" data-scroll-target="#save-results">Save results</a></li>
@@ -279,7 +277,7 @@ Listing:
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>l6.srt.srt <span class="ot">&lt;-</span></span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Store_Palette_Seurat</span>(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">seurat_object =</span> l6.srt,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="at">n =</span> <span class="dv">11</span>, <span class="at">name =</span> <span class="st">"Spectral"</span>)),</span>
@@ -2256,6 +2254,8 @@ Active assay: RNA (27998 features, 0 variable features)</code></pre>
 </section>
 <section id="focused-data-analysis-of-wdr37-brain-regions" class="level2">
 <h2 class="anchored" data-anchor-id="focused-data-analysis-of-wdr37-brain-regions">Focused data analysis of Wdr37+ brain regions</h2>
+<section id="subset-ca1-only" class="level3">
+<h3 class="anchored" data-anchor-id="subset-ca1-only">Subset CA1 only</h3>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
@@ -2269,8 +2269,8 @@ Active assay: RNA (27998 features, 0 variable features)</code></pre>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>cell.clusters <span class="ot">&lt;-</span> <span class="fu">Idents</span>(l6.srt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="run-swne" class="level3">
-<h3 class="anchored" data-anchor-id="run-swne">Run SWNE</h3>
+<section id="run-swne-for-ca1" class="level4">
+<h4 class="anchored" data-anchor-id="run-swne-for-ca1">Run SWNE for CA1</h4>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
@@ -2308,8 +2308,8 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 </div>
 </div>
 </section>
-<section id="plot-swne" class="level3">
-<h3 class="anchored" data-anchor-id="plot-swne">Plot SWNE</h3>
+<section id="plot-swne-of-ca1" class="level4">
+<h4 class="anchored" data-anchor-id="plot-swne-of-ca1">Plot SWNE of CA1</h4>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
@@ -2333,15 +2333,73 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 </div>
 </div>
 </section>
-<section id="swne-density-plots-of-interactions-between-wdr37-and-other-features" class="level3">
-<h3 class="anchored" data-anchor-id="swne-density-plots-of-interactions-between-wdr37-and-other-features">SWNE density plots of interactions between Wdr37 and other features</h3>
+<section id="gaba-1" class="level4">
+<h4 class="anchored" data-anchor-id="gaba-1">GABA</h4>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Slc32a1"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="local_files/figure-html/plt-ca1-swne-density-slc32a1-1.png" class="img-fluid figure-img" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Gad1"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="local_files/figure-html/plt-ca1-swne-density-gad1-1.png" class="img-fluid figure-img" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Gad2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="local_files/figure-html/plt-ca1-swne-density-gad2-1.png" class="img-fluid figure-img" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glutamate-1" class="level4">
+<h4 class="anchored" data-anchor-id="glutamate-1">Glutamate</h4>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Custom</span>(<span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="local_files/figure-html/plt-ca1-swne-density-glut-1.png" class="img-fluid figure-img" width="3600"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="swne-density-plots-of-interactions-between-wdr37-and-other-features" class="level4">
+<h4 class="anchored" data-anchor-id="swne-density-plots-of-interactions-between-wdr37-and-other-features">SWNE density plots of interactions between Wdr37 and other features</h4>
+<div class="cell" data-layout-align="center" data-fig.fullwidth="true">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2354,10 +2412,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Grm5"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Grm5"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2370,10 +2428,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2386,10 +2444,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2402,10 +2460,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Pacs2"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Pacs2"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2418,10 +2476,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> ca1.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2432,30 +2490,31 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 </div>
 </div>
 </section>
-<section id="plot-swne-of-selected-regions" class="level3">
-<h3 class="anchored" data-anchor-id="plot-swne-of-selected-regions">Plot SWNE of selected regions</h3>
+</section>
+<section id="plot-swne-of-selected-regions-ca1-hypothalamus-midbrain-medulla-pons-thalamus" class="level3">
+<h3 class="anchored" data-anchor-id="plot-swne-of-selected-regions-ca1-hypothalamus-midbrain-medulla-pons-thalamus">Plot SWNE of selected regions: CA1, Hypothalamus, Midbrain, Medulla, Pons, Thalamus</h3>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot_scCustom</span>(</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  l6.srt,</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span>,</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">color_seed =</span> reseed</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|</span></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">DimPlot_scCustom</span>(</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    l6.srt,</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"swne"</span>,</span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">group.by =</span> <span class="st">"ClusterName"</span>,</span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">color_seed =</span> reseed</span>
-<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">&amp;</span> <span class="fu">NoLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot_scCustom</span>(</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  l6.srt,</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span>,</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">color_seed =</span> reseed</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">DimPlot_scCustom</span>(</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    l6.srt,</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">"swne"</span>,</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">group.by =</span> <span class="st">"ClusterName"</span>,</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">figure_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">color_seed =</span> reseed</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">&amp;</span> <span class="fu">NoLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2471,10 +2530,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2487,10 +2546,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Grm5"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Grm5"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2503,10 +2562,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Pacs2"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2519,10 +2578,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2535,10 +2594,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Pacs2"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Pacs2"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2551,10 +2610,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot_Density_Joint_Only</span>(</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seurat_object =</span> l6.srt, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Slc17a6"</span>), <span class="at">custom_palette =</span> l6.srt<span class="sc">@</span>misc<span class="sc">$</span>div_Colour_Pal,</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">"swne"</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2570,10 +2629,10 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">make_hexbin</span>(l6.srt,</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">nbins =</span> <span class="dv">42</span>,</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimension_reduction =</span> <span class="st">"swne"</span>, <span class="at">use_dims =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>l6.srt <span class="ot">&lt;-</span> <span class="fu">make_hexbin</span>(l6.srt,</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">nbins =</span> <span class="dv">42</span>,</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimension_reduction =</span> <span class="st">"swne"</span>, <span class="at">use_dims =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="plot-hexagon-cell-representation" class="level4">
@@ -2581,7 +2640,7 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_density</span>(l6.srt) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_density</span>(l6.srt) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2594,12 +2653,12 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Wdr37"</span>,</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Wdr37 in logarithmic scale"</span>)</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Wdr37"</span>,</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Wdr37 in logarithmic scale"</span>)</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2612,12 +2671,12 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Pacs2"</span>,</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Pacs2 in logarithmic scale"</span>)</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Pacs2"</span>,</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Pacs2 in logarithmic scale"</span>)</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2630,12 +2689,12 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Grm5"</span>,</span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Grm5 in logarithmic scale"</span>)</span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Grm5"</span>,</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Grm5 in logarithmic scale"</span>)</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2648,12 +2707,12 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Slc32a1"</span>,</span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Slc32a1 in logarithmic scale"</span>)</span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Slc32a1"</span>,</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Slc32a1 in logarithmic scale"</span>)</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2666,12 +2725,12 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Gad1"</span>,</span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Gad1 in logarithmic scale"</span>)</span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Gad1"</span>,</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Gad1 in logarithmic scale"</span>)</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2684,12 +2743,12 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Gad2"</span>,</span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Gad2 in logarithmic scale"</span>)</span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Gad2"</span>,</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Gad2 in logarithmic scale"</span>)</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2702,12 +2761,12 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center" data-fig.fullwidth="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Slc17a6"</span>,</span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Slc17a6 in logarithmic scale"</span>)</span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_feature_plus</span>(l6.srt,</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"Tissue"</span>,</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="st">"RNA"</span>, <span class="at">type =</span> <span class="st">"data"</span>, <span class="at">feature =</span> <span class="st">"Slc17a6"</span>,</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"median"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>, <span class="at">ylab =</span> <span class="st">"SWNE2"</span>,</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Median of mRNA expression of Slc17a6 in logarithmic scale"</span>)</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> ggsci<span class="sc">::</span><span class="fu">scale_fill_material</span>(<span class="st">"amber"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2723,18 +2782,18 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Pacs2"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Wdr37 and Pacs2/nSpearman rho in hexagonal cells representation"</span></span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
-<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
-<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
-<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Pacs2"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Wdr37 and Pacs2/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb67-12"><a href="#cb67-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2747,18 +2806,18 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Grm5"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Wdr37 and Grm5/nSpearman rho in hexagonal cells representation"</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
-<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
-<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
-<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Grm5"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Wdr37 and Grm5/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2771,18 +2830,18 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Slc17a6"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Wdr37 and Slc17a6/nSpearman rho in hexagonal cells representation"</span></span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
-<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
-<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
-<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
-<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Wdr37"</span>, <span class="st">"Slc17a6"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Wdr37 and Slc17a6/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2795,18 +2854,18 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Pacs2"</span>, <span class="st">"Slc17a6"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Pacs2 and Slc17a6/nSpearman rho in hexagonal cells representation"</span></span>
-<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
-<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
-<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
-<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
-<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
-<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Pacs2"</span>, <span class="st">"Slc17a6"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Pacs2 and Slc17a6/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2819,18 +2878,18 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Slc17a6"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
-<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Grm5 and Slc17a6/nSpearman rho in hexagonal cells representation"</span></span>
-<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
-<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
-<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
-<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
-<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
-<span id="cb67-12"><a href="#cb67-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_hexbin_interact</span>(l6.srt,</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"data"</span>),</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RNA"</span>), <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Grm5"</span>, <span class="st">"Slc17a6"</span>), <span class="at">interact =</span> <span class="st">"corr_spearman"</span>,</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"SWNE2"</span>, <span class="at">xlab =</span> <span class="st">"SWNE1"</span>,</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Interaction between mRNA expression of Grm5 and Slc17a6/nSpearman rho in hexagonal cells representation"</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">space =</span> <span class="st">"Lab"</span>,</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"navy"</span>,</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"wheat1"</span>,</span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"orangered1"</span></span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2847,13 +2906,13 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(l6.srt, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"l6.srt.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(l6.srt, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"l6.srt.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
@@ -2866,7 +2925,7 @@ stress after  60 iters: 0.08229, magic = 0.500</code></pre>
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Etc/UTC
- date     2023-05-17
+ date     2023-05-29
  pandoc   2.19.2 @ /opt/python/3.8.8/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
