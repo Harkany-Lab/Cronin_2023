@@ -301,6 +301,10 @@ Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Grm5"), c
 Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Pacs2"), custom_palette = l6.srt@misc$div_Colour_Pal)
 ```
 
+```{r plt-init-umap-density-wdr37-penk, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Penk"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
 ### UMAP density plots of neurotransmitter phenotype with Wdr37 and other features
 
 #### GABA
