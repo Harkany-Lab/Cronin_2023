@@ -305,6 +305,10 @@ Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Pacs2"), c
 Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Wdr37", "Penk"), custom_palette = l6.srt@misc$div_Colour_Pal)
 ```
 
+```{r plt-init-umap-density-penk-ctsl, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Penk", "Ctsl"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
 ### UMAP density plots of neurotransmitter phenotype with Wdr37 and other features
 
 #### GABA
@@ -338,6 +342,14 @@ Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Pacs2", "Slc17a6")
 
 ```{r plt-init-umap-density-grm5-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
 Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Grm5", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-penk-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Penk", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal)
+```
+
+```{r plt-init-umap-density-ctsl-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(seurat_object = l6.srt, features = c("Ctsl", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal)
 ```
 
 ## Focused data analysis of Wdr37+ brain regions
@@ -512,6 +524,20 @@ Plot_Density_Joint_Only(
 )
 ```
 
+```{r plt-init-swne-density-wdr37-penk, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Wdr37", "Penk"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
+```{r plt-init-swne-density-wdr37-ctsl, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Wdr37", "Ctsl"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
 ```{r plt-init-swne-density-wdr37-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
 Plot_Density_Joint_Only(
   seurat_object = l6.srt, features = c("Wdr37", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
@@ -529,6 +555,20 @@ Plot_Density_Joint_Only(
 ```{r plt-init-swne-density-grm5-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
 Plot_Density_Joint_Only(
   seurat_object = l6.srt, features = c("Grm5", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
+```{r plt-init-swne-density-penk-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Penk", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
+  reduction = "swne"
+)
+```
+
+```{r plt-init-swne-density-ctsl-glut, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = l6.srt, features = c("Ctsl", "Slc17a6"), custom_palette = l6.srt@misc$div_Colour_Pal,
   reduction = "swne"
 )
 ```
